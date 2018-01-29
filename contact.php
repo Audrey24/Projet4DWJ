@@ -11,15 +11,15 @@
     <title>Clean Blog - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="themeAdd/dep/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="themeAdd/dep/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
-    <link href="vendor/css/clean-blog.min.css" rel="stylesheet">
+    <link href="themeAdd/css/clean-blog.min.css" rel="stylesheet">
 
   </head>
 
@@ -97,15 +97,15 @@ Voulez-vous me contacter ? Remplissez le formulaire ci-dessous pour m'envoyer un
     <?php include("footer.php");?>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="themeAdd/dep/jquery/jquery.min.js"></script>
+    <script src="themeAdd/dep/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Contact Form JavaScript -->
-    <script src="vendor/js/jqBootstrapValidation.js"></script>
-    <script src="vendor/js/contact_me.js"></script>
+    <script src="themeAdd/js/jqBootstrapValidation.js"></script>
+    <script src="themeAdd/js/contact_me.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="vendor/js/clean-blog.min.js"></script>
+    <script src="themeAdd/js/clean-blog.min.js"></script>
 
   </body>
 

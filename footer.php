@@ -1,4 +1,4 @@
-<link href="vendor/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="themeAdd/dep/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 <footer>
   <div class="container">
