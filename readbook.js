@@ -61,12 +61,12 @@
 			else if (e.keyCode==39)
 				$('#book').turn('next');
 
-		document.getElementById('next').addEventListener("click", function() { // image suivante
+		});
+
+		$('#next').bind("click", function(e) { // image suivante
    			$('#book').turn('next');
 		});
 
-		document.getElementById('prev').addEventListener("click", function() { // image suivante
+		$('#prev').bind("click", function(e) { // image suivante
    			$('#book').turn('previous');
 		});
-
-	});
