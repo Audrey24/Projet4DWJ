@@ -35,8 +35,8 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="page-heading">
-              <h1>Contacter Moi</h1>
-              <span class="subheading">Vous avez des questions, j'ai les réponses</span>
+              <h1>Contactez Moi</h1>
+              <span class="subheading">Vous avez des questions, j'ai les réponses.</span>
             </div>
           </div>
         </div>
@@ -47,8 +47,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <p>
-Voulez-vous me contacter ? Remplissez le formulaire ci-dessous pour m'envoyer un message et je vous repondrais dès que possible!</p>
+          <p>Pour me contacter ? Remplissez ce formulaire et je vous répondrais dans les meilleurs délais !</p>
           <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
           <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
           <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->

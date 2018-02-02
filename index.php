@@ -55,7 +55,7 @@
         <div id="presentation" class="col-lg-4">
             <p>Bienvenue sur mon blog !</p>
             <p>Venez découvrir mon tout dernier roman. Chaque semaine, un nouveau chapitre sera disponible.</p>
-            <p>N'hésitez pas à laissez votre impression.<p>
+            <p>N'hésitez pas à laisser vos impressions.<p>
             <p>Bonne lecture ! </p>
             <p>Jean Forteroche</p>
         </div>
@@ -78,6 +78,7 @@
 
     <!-- Custom scripts for this template -->
     <script src="themeAdd/js/clean-blog.min.js"></script>
+
 
   </body>
 

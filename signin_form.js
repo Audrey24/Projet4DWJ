@@ -19,4 +19,8 @@ window.onload = function () {
      document.getElementById("signin_form").style.display = "none";
   }
 
+  function onSubmit(token) {
+         document.getElementById('signin_form').submit();
+  }
+
 };

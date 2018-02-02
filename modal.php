@@ -11,6 +11,7 @@
 
       <!-- Contenu de la fenêtre modale-->
       <div class="modal-body">
+        <!--Formulaire de connexion-->
         <form name="connexion_form" id="connexion_form">
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
@@ -32,11 +33,12 @@
           <button type="button" class=" btn col-lg-6 col-md-6 col-sm-6 offset-lg-2 offset-md-1 offset-sm-1" id="sign_in">Créer votre compte</button>
         </form>
 
-        <form name="signin_form" id="signin_form">
+        <!--Formulaire d'inscription-->
+        <form name="signin_form" id="signin_form" method="post" action="signin_process.php">
           <div class="control-group">
             <div class="form-group col-xs-12 floating-label-form-group controls">
               <label>Pseudonyme</label>
-              <input type="text" class="form-control" placeholder="Votre pseudo" id="pseudo" required data-validation-required-message="Entrer votre pseudo.">
+              <input type="text" class="form-control" placeholder="Votre pseudo" id="pseudo" name="pseudo2" required data-validation-required-message="Entrer votre pseudo.">
               <p class="help-block text-danger"></p>
             </div>
           </div>
@@ -44,20 +46,22 @@
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Adresse mail</label>
-              <input type="email" class="form-control" placeholder="Votre adresse mail" id="mail2" required data-validation-required-message="Entrer votre adresse mail.">
-              <p class="help-block text-danger"></p>
+              <input type="email" class="form-control" placeholder="Votre adresse mail" id="mail2" name="mail22"required data-validation-required-message="Entrer votre adresse mail.">
+              <!--<p class="help-block text-danger"></p>-->
             </div>
           </div>
 
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Mot de passe</label>
-              <input type="password" class="form-control" placeholder="Votre mot de passe" id="password2" required data-validation-required-message="Entrer votre mot de passe.">
+              <input type="password" class="form-control" placeholder="Votre mot de passe" id="password2" name="pass22" required data-validation-required-message="Entrer votre mot de passe.">
               <p class="help-block text-danger"></p>
             </div>
           </div></br>
 
           <input type="submit" class="btn col-lg-4 offset-lg-4" value="Créer"/>
+
+          <!--<button class="g-recaptcha" data-sitekey="6LdjZkMUAAAAAMKX1N30r9ALt2tk1o4H7ztK8x98" data-callback="onSubmit">Submit</button>-->
         </form>
       </div>
     </div>
@@ -65,3 +69,4 @@
 </div>
 
 <script src="signin_form.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
