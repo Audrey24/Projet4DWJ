@@ -4,6 +4,7 @@ window.onload = function () {
   var connexionForm = document.getElementById("connexion_form");
   document.getElementById("signin_form").style.display = "none";
   var closed = document.getElementById("closed");
+  var signUp = document.getElementById("sign_up");
 
   signIn.addEventListener('click', function() {
      connexionForm.style.display = "none";

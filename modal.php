@@ -12,11 +12,11 @@
       <!-- Contenu de la fenêtre modale-->
       <div class="modal-body">
         <!--Formulaire de connexion-->
-        <form name="connexion_form" id="connexion_form">
+        <form name="connexion_form" id="connexion_form" method="post" action="test.php">
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
-              <label>Adresse mail</label>
-              <input type="email" class="form-control" placeholder="Votre adresse mail" id="mail1" required data-validation-required-message="Entrer votre adresse mail.">
+              <label>Pseudonyme</label>
+              <input type="test" class="form-control" placeholder="Votre pseudo" id="pseudo1" name="pseudo" required data-validation-required-message="Entrer votre pseudo.">
               <p class="help-block text-danger"></p>
             </div>
           </div>
@@ -24,7 +24,7 @@
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Mot de passe</label>
-              <input type="password" class="form-control" placeholder="Votre mot de passe" id="password1" required data-validation-required-message="Entrer votre mot de passe.">
+              <input type="password" class="form-control" placeholder="Votre mot de passe" id="password1" name="password1" required data-validation-required-message="Entrer votre mot de passe.">
               <p class="help-block text-danger"></p>
             </div>
           </div></br>
@@ -33,10 +33,11 @@
           <button type="button" class=" btn col-lg-6 col-md-6 col-sm-6 offset-lg-2 offset-md-1 offset-sm-1" id="sign_in">Créer votre compte</button>
         </form>
 
+
         <!--Formulaire d'inscription-->
         <form name="signin_form" id="signin_form" method="post" action="signin_process.php">
           <div class="control-group">
-            <div class="form-group col-xs-12 floating-label-form-group controls">
+            <div class="form-group floating-label-form-group controls">
               <label>Pseudonyme</label>
               <input type="text" class="form-control" placeholder="Votre pseudo" id="pseudo" name="pseudo2" required data-validation-required-message="Entrer votre pseudo.">
               <p class="help-block text-danger"></p>
@@ -46,8 +47,8 @@
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Adresse mail</label>
-              <input type="email" class="form-control" placeholder="Votre adresse mail" id="mail2" name="mail22"required data-validation-required-message="Entrer votre adresse mail.">
-              <!--<p class="help-block text-danger"></p>-->
+              <input type="email" class="form-control" placeholder="Adresse Mail" id="email2" required data-validation-required-message="Entrer votre adresse mail..">
+              <p class="help-block text-danger"></p>
             </div>
           </div>
 
@@ -59,7 +60,8 @@
             </div>
           </div></br>
 
-          <input type="submit" class="btn col-lg-4 offset-lg-4" value="Créer"/>
+          <div id="success"></div>
+          <input type="submit" class="btn col-lg-4 offset-lg-4"  id="sign_up" value="Créer"/>
 
           <!--<button class="g-recaptcha" data-sitekey="6LdjZkMUAAAAAMKX1N30r9ALt2tk1o4H7ztK8x98" data-callback="onSubmit">Submit</button>-->
         </form>
@@ -70,3 +72,13 @@
 
 <script src="signin_form.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
+<!-- Bootstrap core JavaScript -->
+<script src="themeAdd/dep/jquery/jquery.min.js"></script>
+<script src="themeAdd/dep/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="themeAdd/js/jqBootstrapValidation.js"></script>
+<script src="themeAdd/js/form.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="themeAdd/js/clean-blog.min.js"></script>

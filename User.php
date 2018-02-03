@@ -26,7 +26,6 @@ class User
         return $this->pass;
     }
 
-
     //MUTATEURS/SETTERS
     // Vérification de la validité des informations
     //On vérifie que les champs sont remplis et valides.
@@ -34,7 +33,7 @@ class User
     {
         $pseudo = htmlspecialchars($pseudo);
         if (!isset($pseudo) || !preg_match("#^[a-z0-9]+$#i", $pseudo)) {
-            $this->error = 'Le ' . $pseudo . ' est pas <strong>valide</strong> !';
+            $this->error = 'Le '. $pseudo . ' est pas <strong>valide</strong> !';
             return false;
         }
         $this->name = $pseudo;
@@ -74,8 +73,25 @@ class User
         }
     }
 
-    public function connect($mail, $pass)
+    public function connect()
     {
+        $passcode = password_hash($_POST['password1'], PASSWORD_DEFAULT);
+        $pseudosignin = $_POST['pseudo'];
+
+        // Vérification des identifiants
+        $req = $bdd->prepare('SELECT pseudo AND pass FROM test WHERE pseudo = :pseudo AND pass = :pass');
+        $req->execute(array(
+        'pseudo' => $pseudosignin,
+        'pass' => $passcode));
+
+        $resultat = $req->fetch();
+
+        if (!$resultat) {
+            echo 'Mauvais identifiant ou mot de passe !';
+            return false;
+        } else {
+            echo 'Vous êtes connecté !';
+        }
     }
 
     //Fonction qui gère l'inscription

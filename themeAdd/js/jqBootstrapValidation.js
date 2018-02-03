@@ -182,14 +182,28 @@
             // ---------------------------------------------------------
             //                                                     EMAIL
             // ---------------------------------------------------------
+
+
             if ($this.attr("type") !== undefined && $this.attr("type").toLowerCase() === "email") {
-              message = "Not a valid email address<!-- data-validator-validemail-message to override -->";
-              if ($this.data("validationValidemailMessage")) {
+              message = "L'adresse mail n'est pas valide<!-- data-validator-validemail-message to override -->";
+              if ($this.data("validationMessage")) {
                 message = $this.data("validationValidemailMessage");
               } else if ($this.data("validationEmailMessage")) {
                 message = $this.data("validationEmailMessage");
               }
               $this.data("validationValidemailMessage", message);
+            }
+
+
+
+            if ($this.attr("type") !== undefined && $this.attr("type").toLowerCase() === "pseudo") {
+              message = "Le pseudo n'est pas valide (seuls les . _ @ - sont acceptés)<!-- data-validator-validpseudo-message to override -->";
+              if ($this.data("validationMessage")) {
+                message = $this.data("validationValidpseudoMessage");
+              } else if ($this.data("validationPseudoMessage")) {
+                message = $this.data("validationPseudoMessage");
+              }
+              $this.data("validationValidpseudoMessage", message);
             }
             // ---------------------------------------------------------
             //                                                MINCHECKED
@@ -808,6 +822,17 @@
       }
     },
     builtInValidators: {
+      pseudo: {
+        name: "Pseudo",
+        type: "shortcut",
+        shortcut: "validpseudo"
+    },
+      validpseudo: {
+        name: "Validpseudo",
+        type: "regex",
+        regex: "[A-Za-z0-9._@-]",
+        message: "Le pseudo n'est pas valide (seuls les . _ @ - sont acceptés)<!-- data-validator-validpseudo-message to override -->"
+      },
       email: {
         name: "Email",
         type: "shortcut",
@@ -817,7 +842,7 @@
         name: "Validemail",
         type: "regex",
         regex: "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\.[A-Za-z]{2,4}",
-        message: "Not a valid email address<!-- data-validator-validemail-message to override -->"
+        message: "L'adresse mail n'est pas valide<!-- data-validator-validemail-message to override -->"
       },
       passwordagain: {
         name: "Passwordagain",

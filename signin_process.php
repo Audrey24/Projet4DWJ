@@ -12,8 +12,3 @@ try {
 
 $user = new User($_POST['pseudo2'], $_POST['mail22'], $_POST['pass22']);
 $user->signup($bdd);
-
-
-
-// Vérification de la validité des informations
-//On vérifie que les champs sont remplis et valides.
