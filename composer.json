@@ -2,7 +2,7 @@
     "name": "guilloux/projet4dwj",
     "description": "Projet 4 pour le parcours DWJ OC",
     "type": "project",
-    "require": {
+    "require-dev": {
         "heroku/heroku-buildpack-php": "^130.0"
     },
     "authors": [
