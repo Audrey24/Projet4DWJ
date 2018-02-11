@@ -9,7 +9,6 @@
         <p>Jean Forteroche</p>
     </div>
 
-
     <div id="articles" class="col-lg-6 offset-lg-2">
       <p>Derniers articles</p>
     </div>

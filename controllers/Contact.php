@@ -9,6 +9,6 @@ class Contact extends Controller
 
     public function index()
     {
-        $this->view->render('contact/contact_form');
+        $this->view->render('contact/contact_form', 'lib/images/contact.jpg');
     }
 }

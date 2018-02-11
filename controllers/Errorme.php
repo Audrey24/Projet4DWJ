@@ -9,6 +9,6 @@ class Errorme extends Controller
 
     public function index()
     {
-        $this->view->render('errorme/index.php');
+        $this->view->render('errorme/errorpage');
     }
 }

@@ -6,9 +6,10 @@ class Current_chapter extends Controller
     {
         parent::__construct();
     }
+    
 
     public function index()
     {
-        $this->view->render('current_chapter/reading');
+        $this->view->render('current_chapter/reading', 'lib/images/chapitre.jpg');
     }
 }

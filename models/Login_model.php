@@ -8,6 +8,9 @@ class Login_model extends Model
 
     public function signin()
     {
+        $error = 0;
+        $msgs[] = array();
+
         $pseudo = $_POST['pseudo1'];
         $pass = $_POST['password1'];
 
@@ -18,13 +21,23 @@ class Login_model extends Model
         $resultat = $req->fetch();
 
         if (!$resultat) {
-            echo 'Mauvais identifiant !';
+            $msgs["message10"] ="Mauvais identifiant !";
+            $error = 1;
         } elseif (password_verify($pass, $resultat['pass'])) {
-            echo 'Bienvenue !';
+            $msgs["message12"] ="Bienvenue " . $pseudo . ", bonne visite !";
+            Session::init(); //sans ceci cela ne marche pas
+            Session::set('pseudo', $pseudo);
         } else {
-            echo 'Erreur, mauvais mot de passe ! ';
+            $msgs["message11"] ="Erreur, mauvais mot de passe ! ";
+            $error = 1;
         }
+
+        echo json_encode($msgs);
+        return true;
     }
+
+
+
 
     public function signup()
     {
@@ -33,22 +46,22 @@ class Login_model extends Model
 
         $pseudo = $_POST['pseudo'];
         $pseudo = htmlspecialchars($pseudo);
-        if (!isset($pseudo) || !preg_match("#^[a-z0-9]+$#i", $pseudo)) {
-            $msgs["message2"] ="Le pseudo n'est pas valide (aucun signe n'est accepté)";
+        if (!isset($pseudo) || !preg_match("#^[a-z0-9ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ@\-_&]{3,16}+$#\i", $pseudo)) {
+            $msgs["message2"] ="Le pseudo n'est pas valide : il doit contenir entre 3 et 16 caractères et se composer de chiffres, de lettres, de lettres accentués ou de ces signes : @ - _ &";
             $error = 1;
         }
 
         $email = $_POST['email2'];
         $email = htmlspecialchars($email);
-        if (!isset($email) || !preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $email)) {
-            $msgs["message3"] = "L'adresse mail n'est pas valide (exemple@bla.com)";
+        if (!isset($email) || !preg_match("#^[a-z0-9._-]+@[a-z0-9._\-]{2,}\.[a-z]{2,4}$#", $email)) {
+            $msgs["message3"] = "L'adresse mail n'est pas valide, elle doit se composer comme ceci : exemple@bla.com";
             $error = 1;
         }
 
         $passbrut = $_POST['password2'];
         $passbrut = htmlspecialchars($passbrut);
-        if (!isset($passbrut) || !preg_match("#^[a-z0-9]+$#", $passbrut)) {
-            $msgs["message4"] = "Le mot de passe n'est pas valide (doit contenir des chiffres et des lettres, pas de signes)!";
+        if (!isset($passbrut) || !preg_match("#^[a-z0-9ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ@\-_&/(){}]{3,16}+$#", $passbrut)) {
+            $msgs["message4"] = "Le mot de passe n'est pas valide : il doit contenir entre 3 et 16 caractères et se composer de chiffres, de lettres ou de ces signes : - _ & / () {} )";
             $error = 1;
         }
         $passbrut = password_hash($passbrut, PASSWORD_DEFAULT);
@@ -56,13 +69,8 @@ class Login_model extends Model
         if (empty($_POST['pseudo']) ||
                 empty($_POST['email2']) ||
                 empty($_POST['password2']) ||
-                !filter_var($_POST['email2'], FILTER_VALIDATE_EMAIL) ||
-                !filter_var(
-                    $_POST['pseudo'],
-                    FILTER_VALIDATE_REGEXP,
-                  array("options"=>array("regexp"=>"#^[a-z0-9]+$#i"))
-                )) {
-            $msgs["message1"] = "Aucun argument n'a été fourni!";
+                !filter_var($_POST['email2'], FILTER_VALIDATE_EMAIL)) {
+            $msgs["message1"] = "Aucune donnée n'a été fournie !";
             $error = 1;
         }
 
@@ -108,10 +116,26 @@ class Login_model extends Model
                   'pseudo' => $pseudo,
                   'mail' => $email,
                   'pass' => $passbrut));
-            $msgs["message8"] = "Inscription validée";
+            $msgs["message8"] = "L'inscription est validée, bienvenue sur notre site " . $pseudo;
+            Session::init();
+            Session::set('pseudo', $pseudo);
         }
 
         echo json_encode($msgs);
         return true;
+    }
+
+    public function disconnect()
+    {
+        $_SESSION = array();
+
+        if (ini_get('session.use_cookies')) {
+            $param = session_get_cookie_params();
+            setcookie(session_name(), '', time()-42000, $param['path'], $param['domain'], $param['secure']);
+        }
+
+        session_destroy();
+
+        header('Location: ../home');
     }
 }

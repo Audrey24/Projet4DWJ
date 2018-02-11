@@ -1,4 +1,3 @@
-
 <?php
 
 class Home extends Controller
@@ -10,7 +9,7 @@ class Home extends Controller
 
     public function index()
     {
-        $this->view->render('home/index');
+        $this->view->render('home/index', 'lib/images/plume.jpg');
     }
 
     public function other()
@@ -20,5 +19,3 @@ class Home extends Controller
         $model = new Home_model();
     }
 }
-
- ?>

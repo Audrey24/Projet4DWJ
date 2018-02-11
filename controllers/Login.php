@@ -22,6 +22,11 @@ class Login extends Controller
     {
         $this->model->signup();
     }
+
+    public function disconnect()
+    {
+        $this->model->disconnect();
+    }
 }
 
  ?>

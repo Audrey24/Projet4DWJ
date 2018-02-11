@@ -29,8 +29,10 @@
             </div>
           </div></br>
 
-          <input type="submit" class="btn col-lg-3 col-md-4 col-sm-6" id="btn_submit" value="Valider"/>
-          <button type="button" class=" btn col-lg-6 col-md-6 col-sm-6 offset-lg-2 offset-md-1 offset-sm-1" id="sign_in">Créer votre compte</button>
+
+          <div id="success1"></div>
+          <input type="submit" class="btn btn-success col-lg-3 col-md-3 col-sm-3" id="btn_submit" value="Valider"/>
+          <button type="button" class=" btn btn-info col-lg-6 col-md-6 col-sm-6 offset-lg-2 offset-md-2 offset-sm-2" id="sign_in">Créer votre compte</button>
         </form>
 
 
@@ -41,9 +43,7 @@
               <label>Pseudonyme</label>
               <input type="text" class="form-control" placeholder="Votre pseudo" id="pseudo2" name="pseudo2" required data-validation-required-message="Entrer votre pseudo.">
               <p class="help-block text-danger"></p>
-
             </div>
-
           </div>
 
           <div class="control-group">
@@ -63,7 +63,7 @@
           </div></br>
 
           <div id="success"></div>
-          <input type="submit" class="btn col-lg-4 offset-lg-4"  id="sign_up" value="Créer"/>
+          <input type="submit" class="btn btn-success col-lg-4 offset-lg-4"  id="sign_up" value="Créer"/>
 
           <!--<button class="g-recaptcha" data-sitekey="6LdjZkMUAAAAAMKX1N30r9ALt2tk1o4H7ztK8x98" data-callback="onSubmit">Submit</button>-->
         </form>

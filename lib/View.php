@@ -5,8 +5,14 @@ class View
     {
     }
 
-    public function render($name, $noInclude = false)
+    public function render($name, $img = null, $noInclude = false)
     {
+        if (!empty($img)) {
+            $backgroundImg = $img;
+        } else {
+            $backgroundImg = 'lib/images/plume.jpg';
+        }
+
         if ($noInclude == true) {
             $name = rtrim($name, '.php');
             require 'views/'. $name . '.php';

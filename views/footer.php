@@ -42,7 +42,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="<?php echo  URL; ?>lib/themeAdd/dep/jquery/jquery.min.js"></script>
     <script src="<?php echo  URL; ?>lib/themeAdd/dep/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?php echo  URL; ?>lib/themeAdd/js/jqBootstrapValidation.min.js"></script>
+    <script src="<?php echo  URL; ?>lib/themeAdd/js/jqBootstrapValidation.js"></script>
     <script src="<?php echo  URL; ?>lib/js/form.js"></script>
     <script src="<?php echo  URL; ?>lib/js/menu.js"></script>
     <script type="text/javascript" src="<?php echo  URL; ?>lib/themeAdd/turn.min.js"></script>
