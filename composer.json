@@ -1,0 +1,15 @@
+{
+    "name": "guilloux/projet4dwj",
+    "description": "Projet 4 pour le parcours DWJ OC",
+    "type": "project",
+    "require": {
+        "heroku/heroku-buildpack-php": "^130.0"
+    },
+    "authors": [
+        {
+            "name": "Audrey",
+            "email": "guilloux.audrey24@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
