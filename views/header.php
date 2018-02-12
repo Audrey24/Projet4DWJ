@@ -17,7 +17,7 @@
   <body>
     <div id="header">
       <!-- Page Header -->
-      <header class="masthead" style="background-image: url('<?php echo $backgroundImg; ?>')">
+      <header class="masthead" style="background-image: url('<?php echo URL . $backgroundImg; ?>')">
         <div class="overlay"></div>
         <div class="container">
           <div class="row">
@@ -50,6 +50,10 @@
             </li>
 
             <li class="nav-item">
+              <a class="nav-link" href="Contact.php" >Contact</a>
+            </li>
+
+            <li class="nav-item">
               <a class="nav-link" href="Last_chapters.php">Derniers chapitres</a>
             </li>
 
@@ -63,10 +67,6 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="Admin.php">Admin</a>
-            </li>
-
-            <li class="nav-item">
               <a class="nav-link" href="Login/disconnect">Déconnexion</a>
             </li>
              <?php
@@ -75,12 +75,18 @@
             <li class="nav-item">
               <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal" id="connexion">Connexion</a>
             </li>
-<?php
+            <?php
             } ?>
 
+            <?php
+            if (!empty(Session::get('pseudo')) && (Session::get('role')) == 'admin') {
+                ?>
             <li class="nav-item">
-              <a class="nav-link" href="Contact.php" >Contact</a>
+              <a class="nav-link" href="Admin.php">Admin</a>
             </li>
+            <?php
+            } ?>
+
           </ul>
         </div>
       </div>

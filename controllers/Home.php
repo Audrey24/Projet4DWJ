@@ -15,7 +15,7 @@ class Home extends Controller
     public function other()
     {
         echo "page other";
-        require 'models/Home_model.php';
+        require_once 'models/Home_model.php';
         $model = new Home_model();
     }
 }

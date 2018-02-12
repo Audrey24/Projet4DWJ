@@ -9,6 +9,6 @@ class Errorme extends Controller
 
     public function index()
     {
-        $this->view->render('errorme/errorpage');
+        $this->view->render('errorme/errorpage', 'lib/images/erreur.jpg');
     }
 }

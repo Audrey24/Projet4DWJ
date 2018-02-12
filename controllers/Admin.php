@@ -6,9 +6,10 @@ class Admin extends Controller
     {
         parent::__construct();
         //Session::init();
-        if (!Session::isAuthenticated()) {
-            //echo '<a class="nav-link" href="#" data-toggle="modal" data-target="#myModal" id="connexion">Connexion</a>';
-            echo "pas connecte";
+        if (Session::get('role') == 'admin') {
+            $this->index();
+        } else {
+            header('location: Home.php');
         }
     }
 

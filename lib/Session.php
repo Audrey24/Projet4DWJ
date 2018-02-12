@@ -4,7 +4,9 @@ class Session
 {
     public static function init()
     {
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
     }
 
     public static function set($key, $value)
@@ -19,19 +21,24 @@ class Session
         }
     }
 
-    public static function isAuthenticated()
+    public static function authenticate($role, $pseudo)
     {
-        return isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === true;
+        Session::set('pseudo', $pseudo);
+        Session::set('role', $role);
     }
-    /*
-        public static function setAuthenticated($authenticated = true)
-        {
-            if (!is_bool($authenticated)) {
-                throw new \InvalidArgumentException('La valeur spécifiée à la méthode User::setAuthenticated() doit être un boolean');
-            }
-    
-            $_SESSION['pseudo'] = $authenticated;
-        }*/
+
+    public static function trySignin()
+    {
+        session_start();
+        if (!isset($_SESSION['tries'])) {
+            $_SESSION['tries'] = 1;
+        } else {
+            $_SESSION['tries'] = $_SESSION['tries'] +1;
+        }
+        if ($_SESSION['tries'] > 3) {
+            $_SESSION['tries'] = 4;
+        }
+    }
 
     public static function destroy()
     {

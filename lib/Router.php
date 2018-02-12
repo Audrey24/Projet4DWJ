@@ -21,8 +21,7 @@ class Router
         if (file_exists($file)) {
             require $file;
         } else {
-            require_once("controllers/Errorme.php");
-            $controller = new Errorme();
+            $this->error();
             return false;
         }
 
@@ -34,6 +33,7 @@ class Router
                 $controller->{$url[1]}($url[2]);
             } else {
                 $this->error();
+                return false;
             }
         } else {
             if (isset($url[1])) {
@@ -41,6 +41,7 @@ class Router
                     $controller->{$url[1]}();
                 } else {
                     $this->error();
+                    return false;
                 }
             } else {
                 $controller->index();
@@ -50,8 +51,8 @@ class Router
 
     public function error()
     {
-        require "controllers/Errorme.php";
-        $controller = new Error();
+        require_once "controllers/Errorme.php";
+        $controller = new Errorme();
         $controller->index();
         return false;
     }

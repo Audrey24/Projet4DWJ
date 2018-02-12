@@ -60,12 +60,13 @@
               <input type="password" class="form-control" placeholder="Votre mot de passe" id="password2" name="pass22" required data-validation-required-message="Entrer votre mot de passe.">
               <p class="help-block text-danger"></p>
             </div>
-          </div></br>
+          </div>
 
-          <div id="success"></div>
-          <input type="submit" class="btn btn-success col-lg-4 offset-lg-4"  id="sign_up" value="Créer"/>
+          <!--<div class="g-recaptcha" data-sitekey="6LdjZkMUAAAAAMKX1N30r9ALt2tk1o4H7ztK8x98" data-size="invisible" data-badge="inline"> </div>-->
 
-          <!--<button class="g-recaptcha" data-sitekey="6LdjZkMUAAAAAMKX1N30r9ALt2tk1o4H7ztK8x98" data-callback="onSubmit">Submit</button>-->
+          <div id="success"></div></br>
+          <input type="submit" class="btn btn-success col-lg-12 col-md-12 col-sm-12 g-recaptcha" id="sign_up" value="Créer"/>
+
         </form>
       </div>
     </div>
