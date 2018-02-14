@@ -5,16 +5,16 @@ class Admin extends Controller
     public function __construct()
     {
         parent::__construct();
-        //Session::init();
+        Session::init();
         if (Session::get('role') == 'admin') {
             $this->index();
         } else {
-            header('location: Home.php');
+            header('location: home');
         }
     }
 
     public function index()
     {
-        $this->view->render('admin/dashboard');
+        $this->view->render('admin/dashboard', 'lib/images/plume.jpg');
     }
 }

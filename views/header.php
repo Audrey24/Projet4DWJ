@@ -6,14 +6,17 @@
     <title>Jean Rochefort, blog d'éciture</title>
     <link href="<?php echo  URL; ?>lib/themeAdd/css/clean-blog.min.css" rel="stylesheet">
     <link href="<?php echo  URL; ?>lib/themeAdd/css/clean-blog.css" rel="stylesheet">
+    <link href="<?php echo  URL; ?>lib/themeAdd/css/admin.css" rel="stylesheet">
     <link href="<?php echo  URL; ?>lib/themeAdd/dep/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link href="<?php echo  URL; ?>lib/themeAdd/dep/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
   </head>
-  </head>
+
   <body>
     <div id="header">
       <!-- Page Header -->
@@ -43,18 +46,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="Home.php">Accueil</a>
+              <a class="nav-link" href="Home">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="About.php">Qui suis-je ?</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="Contact.php" >Contact</a>
+              <a class="nav-link" href="About">Qui suis-je ?</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="Last_chapters.php">Derniers chapitres</a>
+              <a class="nav-link" href="Contact" >Contact</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="Last_chapters">Derniers chapitres</a>
             </li>
 
 
@@ -63,7 +66,7 @@
                 ?>
 
             <li class="nav-item">
-              <a class="nav-link" href="Current_chapter.php">Lecture en cours</a>
+              <a class="nav-link" href="Current_chapter">Lecture en cours</a>
             </li>
 
             <li class="nav-item">
@@ -82,7 +85,7 @@
             if (!empty(Session::get('pseudo')) && (Session::get('role')) == 'admin') {
                 ?>
             <li class="nav-item">
-              <a class="nav-link" href="Admin.php">Admin</a>
+              <a class="nav-link" href="Admin">Admin</a>
             </li>
             <?php
             } ?>
@@ -91,7 +94,6 @@
         </div>
       </div>
     </nav>
-
 
     <?php include('login/connexionform.php');?>
 

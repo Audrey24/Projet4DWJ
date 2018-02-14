@@ -43,7 +43,7 @@ class Router
                     $this->error();
                     return false;
                 }
-            } else {
+            } elseif (strtolower($url[0]) != ("admin")) {
                 $controller->index();
             }
         }
