@@ -6,7 +6,7 @@
     <title>Jean Rochefort, blog d'éciture</title>
     <link href="<?php echo  URL; ?>lib/themeAdd/css/clean-blog.min.css" rel="stylesheet">
     <link href="<?php echo  URL; ?>lib/themeAdd/css/clean-blog.css" rel="stylesheet">
-    <link href="<?php echo  URL; ?>lib/themeAdd/css/admin.css" rel="stylesheet">
+    <link href="<?php echo  URL; ?>lib/css/admin.css" rel="stylesheet">
     <link href="<?php echo  URL; ?>lib/themeAdd/dep/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
@@ -46,18 +46,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="Home">Accueil</a>
+              <a class="nav-link" href="<?php echo  URL; ?>Home">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="About">Qui suis-je ?</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="Contact" >Contact</a>
+              <a class="nav-link" href="<?php echo  URL; ?>About">Qui suis-je ?</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="Last_chapters">Derniers chapitres</a>
+              <a class="nav-link" href="<?php echo  URL; ?>Contact" >Contact</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo  URL; ?>Last_chapters">Derniers chapitres</a>
             </li>
 
 
@@ -66,11 +66,11 @@
                 ?>
 
             <li class="nav-item">
-              <a class="nav-link" href="Current_chapter">Lecture en cours</a>
+              <a class="nav-link" href="<?php echo  URL; ?>Current_chapter">Lecture en cours</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="Login/disconnect">Déconnexion</a>
+              <a class="nav-link" href="<?php echo  URL; ?>Login/disconnect">Déconnexion</a>
             </li>
              <?php
             } else {
@@ -85,7 +85,7 @@
             if (!empty(Session::get('pseudo')) && (Session::get('role')) == 'admin') {
                 ?>
             <li class="nav-item">
-              <a class="nav-link" href="Admin">Admin</a>
+              <a class="nav-link" href="<?php echo  URL; ?>Admin">Admin</a>
             </li>
             <?php
             } ?>

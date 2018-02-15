@@ -47,14 +47,14 @@ class Login_model extends Model
     {
         $error = 0;
         $msgs[] = array();
-        $secret = '6LdjZkMUAAAAAGEU0LnnUXfuOCx-XrylQGKARHXs';
+        /*$secret = '6LdjZkMUAAAAAGEU0LnnUXfuOCx-XrylQGKARHXs';
         $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['recaptcha']);
         $responseData = json_decode($verifyResponse);
 
         if ($responseData->success != 1) {
             $msgs["message8"] = "Bonjour M. le robot (les robots ne s'intéressent pas trop à mes livres !)";
             $error = 1;
-        }
+        }*/
 
         $pseudo = $_POST['pseudo'];
         $pseudo = htmlspecialchars($pseudo);

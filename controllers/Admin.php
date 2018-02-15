@@ -6,9 +6,7 @@ class Admin extends Controller
     {
         parent::__construct();
         Session::init();
-        if (Session::get('role') == 'admin') {
-            $this->index();
-        } else {
+        if (Session::get('role') != 'admin') {
             header('location: home');
         }
     }
@@ -16,5 +14,10 @@ class Admin extends Controller
     public function index()
     {
         $this->view->render('admin/dashboard', 'lib/images/plume.jpg');
+    }
+
+    public function create()
+    {
+        $this->model->create();
     }
 }

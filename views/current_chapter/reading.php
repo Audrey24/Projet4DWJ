@@ -11,3 +11,6 @@
     <button type="button" class="btn btn-outline-secondary" id="next"><i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i></button>
     <p>Tourner les pages avec les flèches du clavier</p>
 </div>
+
+<script type="text/javascript" src="<?php echo  URL; ?>lib/themeAdd/turn.min.js"></script>
+<script type="text/javascript" src="<?php echo  URL; ?>lib/themeAdd/readbook.js"></script>

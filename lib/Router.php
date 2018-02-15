@@ -17,6 +17,7 @@ class Router
         }
 
         $url[0] = rtrim($url[0], '.php');
+        $url[0] = ucfirst($url[0]);
         $file = 'controllers/' . $url[0] . '.php';
         if (file_exists($file)) {
             require $file;
@@ -43,7 +44,7 @@ class Router
                     $this->error();
                     return false;
                 }
-            } elseif (strtolower($url[0]) != ("admin")) {
+            } else {
                 $controller->index();
             }
         }
