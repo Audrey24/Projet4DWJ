@@ -9,19 +9,18 @@
                 <li data-toggle="collapse" data-target="#news" class="collapsed active">
                   <i class="fa fa-pencil fa-lg"></i> Editeur de texte</li>
                     <ul class="sub-menu collapse" id="news">
-                      <li class='updateCol2' data-file="write">Rédiger</li>
-                      <li class='updateCol2' data-file="edit">Modifier</li>
-                      <li>Corbeille</li>
-                      <li>Supprimer</li>
+                      <li class='updateCol2' data-file="write" id="btn_write">Rédiger</li>
+                      <li class='updateCol2' data-file="edit">Modifier/Supprimer</li>
+                      <li class='updateCol2' data-file="draft">Brouillons</li>
                     </ul>
 
                 <li><i class="fa fa-calendar fa-lg"></i> Publication différée</li>
-                <li><i class="fa fa-trash fa-lg"></i> Corbeille</li>
+                <li><i class="fa fa-comments fa-lg"></i></i> Commentaires</li>
             </ul>
         </div>
       </div>
 
-      <div id="colonne2" class="col-lg-7 offset-lg-1"></div>
+      <div id="colonne2" class="col-lg-9"></div>
 
   </div>
 

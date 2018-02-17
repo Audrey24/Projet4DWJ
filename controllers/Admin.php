@@ -20,4 +20,19 @@ class Admin extends Controller
     {
         $this->model->create();
     }
+
+    public function textsList()
+    {
+        $this->model->textsList();
+    }
+
+    public function delete($id)
+    {
+        $this->model->delete($id);
+    }
+
+    public function getOne($id)
+    {
+        $this->model->getOne($id);
+    }
 }
