@@ -3,15 +3,13 @@
 
 class Login extends Controller
 {
+    //Construction sur le model du parent qui est Controller.
     public function __construct()
     {
         parent::__construct();
     }
 
-    public function index()
-    {
-        //$this->view->render('login/connexionform');
-    }
+    //Fonctions qui appellent les fonctions définies dans le model.
 
     public function signin()
     {

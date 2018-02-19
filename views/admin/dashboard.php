@@ -11,7 +11,6 @@
                     <ul class="sub-menu collapse" id="news">
                       <li class='updateCol2' data-file="write" id="btn_write">Rédiger</li>
                       <li class='updateCol2' data-file="edit">Modifier/Supprimer</li>
-                      <li class='updateCol2' data-file="draft">Brouillons</li>
                     </ul>
 
                 <li><i class="fa fa-calendar fa-lg"></i> Publication différée</li>

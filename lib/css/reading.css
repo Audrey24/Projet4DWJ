@@ -1,0 +1,61 @@
+#presentation {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.rounded_image{
+    overflow:hidden;
+    -webkit-border-radius:100px;
+    -moz-border-radius:100px;
+    border-radius:100px;
+    width:200px;
+    height:200px;
+    float: left;
+    margin-right: 20px;
+}
+
+#bio {
+  text-align: justify;
+}
+
+.bio_title {
+  text-align: center;
+}
+
+#lienMusso {
+  color: black;
+  text-align: center;
+  text-decoration: none;
+}
+
+#lienMusso:hover {
+   color: gray;
+}
+
+#footer {
+  padding: 20px;
+  background-color: #ececec;
+  color: black !important;
+}
+
+.title_news {
+  font-weight: bold;
+}
+
+#newspage {
+  text-align: center;
+  font-size: 1.3em;
+}
+
+#published {
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+td a {
+  color: black;
+}
+
+td a:hover {
+  color:#17a2b8;
+}
