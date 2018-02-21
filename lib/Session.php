@@ -25,10 +25,11 @@ class Session
     }
 
     //Associe valeurs des var pseudo et rôle aux clés correspondant.
-    public static function authenticate($role, $pseudo)
+    public static function authenticate($role, $pseudo, $id)
     {
         Session::set('pseudo', $pseudo);
         Session::set('role', $role);
+        Session::set('id', $id);
     }
 
     //Compte le nombre d'essai

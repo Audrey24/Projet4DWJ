@@ -26,9 +26,9 @@ class Admin extends Controller
         $this->model->create();
     }
 
-    public function textsList()
+    public function textsList($type)
     {
-        $this->model->textsList();
+        $this->model->textsList($type);
     }
 
     public function delete($id)

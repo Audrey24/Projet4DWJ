@@ -40,7 +40,7 @@ class Login_model extends Model
         } elseif (password_verify($pass, $resultat['pass'])) {
             $msgs["message12"] =" Bienvenue " . $pseudo . ", bonne visite !";
             Session::init(); //sans ceci cela ne marche pas
-            Session::authenticate($resultat['role'], $pseudo);
+            Session::authenticate($resultat['role'], $pseudo, $resultat['id']);
         } else {
             $msgs["message11"] =" Erreur, mauvais mot de passe !  Il vous reste " .  $val . " essais " ;
             $error = 1;
@@ -145,7 +145,7 @@ class Login_model extends Model
                   'role' => "visiteur"));
             $msgs["message9"] = "L'inscription est validée, bienvenue sur notre site " . $pseudo;
             Session::init();
-            Session::authenticate('visiteur', $pseudo);
+            Session::authenticate('visiteur', $pseudo, $this->db->lastInsertId());
         }
 
         echo json_encode($msgs);

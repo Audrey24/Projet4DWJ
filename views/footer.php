@@ -43,9 +43,16 @@
     <script src="<?php echo  URL; ?>lib/js/form.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript">
+    if(document.location.hostname == 'localhost') {
+      var url = 'http://localhost/projet_4/';
+    } else {
+      var url = 'http://projet3.projetsdwjguilloux.ovh/projet_4/';
+    }</script>
 
     <!-- Custom scripts for this template -->
     <script src="<?php echo  URL; ?>lib/themeAdd/js/clean-blog.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
     <!-- Captcha google-->
     <!--<script src='https://www.google.com/recaptcha/api.js?callback=recaptchaOnload'></script>-->

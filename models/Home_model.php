@@ -28,4 +28,23 @@ class Home_model extends Model
         $res = $req->fetch();
         return $res;
     }
+
+    public function getComments()
+    {
+        //On sélectionne les 5 articles les plus récents.
+        $req = $this->db->prepare('SELECT content, DATE_FORMAT( published_date, "%d/%m/%Y") AS published_date  FROM comments WHERE  ORDER BY published_date  DESC LIMIT 20');
+        $req->execute();
+
+        $res = $req->fetchAll();
+        echo json_encode($res);
+    }
+
+    public function comments()
+    {
+        $content = $_POST['comment'];
+
+        $req = $this->db->prepare('INSERT INTO comments (content) VALUES(:content)');
+        $req->execute(array(
+            'content' => $content));
+    }
 }

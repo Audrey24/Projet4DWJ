@@ -10,10 +10,16 @@
                   <i class="fa fa-pencil fa-lg"></i> Editeur de texte</li>
                     <ul class="sub-menu collapse" id="news">
                       <li class='updateCol2' data-file="write" id="btn_write">Rédiger</li>
-                      <li class='updateCol2' data-file="edit">Modifier/Supprimer</li>
                     </ul>
 
-                <li><i class="fa fa-calendar fa-lg"></i> Publication différée</li>
+                  <li data-toggle="collapse" data-target="#edit" class="collapsed active">
+                      <i class="fa fa-edit fa-lg"></i>Modifier/Supprimer</li>
+                        <ul class="sub-menu collapse" id="edit">
+                          <li class='updateCol2' data-file="edit" data-type="Article">Articles</li>
+                          <li class='updateCol2' data-file="edit" data-type="Chapitre">Chapitres</li>
+                          <li class='updateCol2' data-file="edit" data-type="Brouillon">Brouillons</li>
+                        </ul>
+
                 <li><i class="fa fa-comments fa-lg"></i></i> Commentaires</li>
             </ul>
         </div>

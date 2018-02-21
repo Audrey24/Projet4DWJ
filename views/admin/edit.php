@@ -25,4 +25,6 @@
 
 <div id="deletemsg"></div>
 
+<?php include("modalDelete.php");?>
+
 <script type="text/javascript" src="lib/js/admin_edit.js"></script>

@@ -46,10 +46,11 @@ class Admin_model extends Model
     }
 
     //Fonction qui récupère les textes de la bdd.
-    public function textsList()
+    public function textsList($type)
     {
-        $req = $this->db->prepare('SELECT id, type, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date, DATE_FORMAT( deferred_date, "%d/%m/%Y") AS deferred_date FROM texts ORDER BY publication_date  DESC ');
-        $req->execute();
+        $req = $this->db->prepare('SELECT id, type, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date, DATE_FORMAT( deferred_date, "%d/%m/%Y") AS deferred_date FROM texts WHERE type = :type ORDER BY publication_date  DESC ');
+        $req->execute(array(
+          "type" => $type));
 
         $res = $req->fetchAll();
         echo json_encode($res);

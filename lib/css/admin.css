@@ -148,3 +148,7 @@ table {
   padding: 6px;
   text-align: center;
 }
+
+#body_modalDelete {
+  text-align: center;
+}
