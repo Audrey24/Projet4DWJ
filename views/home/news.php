@@ -1,14 +1,14 @@
-<?php setcookie('id', $id, time() + 365*24*3600, null, null, false, true); ?>
-
-<div id="newspage" class="col-lg-6 offset-lg-3">
+<div id="newspage" data-id="<?php echo($this->data['id']); ?>" class="col-lg-6 offset-lg-3">
   <h3><?php echo($this->data['title']); ?></h3></br>
   <div><?php echo($this->data['content']); ?></div></br>
   <p id="published">Publié le : <?php echo($this->data['publication_date']); ?></p>
-</div>
+</div></br>
+
+<hr>
 
 <div class="container">
   <div class="row">
-      <div class="col-lg-3 offset-lg-1 control-group">
+      <div class="col-lg-3 col-sm-12 offset-lg-1 control-group">
     <?php if (!empty(Session::get('pseudo'))) {
     ?>
 
@@ -16,21 +16,21 @@
         <label>Commenter</label>
         <textarea placeholder="Votre commentaire" id="comment" name ="comment" required data-validation-required-message="Veuillez écrire un commentaire."></textarea>
       </div>
-      <button type="submit" class="btn btn-success col-lg-12 col-md-12">Commenter</button>
+      <div id="commentMsg"></div></br>
+      <button type="submit" class="btn btn-success col-lg-12 col-md-12" id="commenter">Commenter</button>
       <?php
-} ?>
+} else { ?> <div id="connexionMsg">Vous devez être connecté pour pouvoir laisser un commentaire !</div></br><?php
+            } ?>
 
-    </div>
+    </div></br>
 
-    <?php echo Session::get('id');?>
-
-
-  <div class="col-lg-4 offset-lg-1 control-group">
-    <table class="table table-striped">
-      <tbody id="contain_comments"></tbody>
+  <div class="col-lg-7 col-sm-12 offset-lg-1 control-group">
+    <p id='lastComments'>Derniers commentaires</p>
+    <table class="table table-striped"> 
+      <tbody id="contain_comments"></tbody>   
     </table>
   </div>
 </div>
 </div>
 
-<script type="text/javascript" src="lib/js/comments.js" defer></script>
+<script type="text/javascript" src="../../lib/js/comments.js" defer></script>

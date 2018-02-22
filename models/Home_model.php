@@ -21,7 +21,7 @@ class Home_model extends Model
     //Fonction pour récupèrer une news en fonction de l'id sélectionné.
     public function getOneNews($id)
     {
-        $req = $this->db->prepare('SELECT title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date FROM texts WHERE id = :id ');
+        $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date FROM texts WHERE id = :id ');
         $req->execute(array(
         'id' => $id));
 
@@ -31,9 +31,11 @@ class Home_model extends Model
 
     public function getComments()
     {
-        //On sélectionne les 5 articles les plus récents.
-        $req = $this->db->prepare('SELECT content, DATE_FORMAT( published_date, "%d/%m/%Y") AS published_date  FROM comments WHERE  ORDER BY published_date  DESC LIMIT 20');
-        $req->execute();
+        $id_text = $_POST['id_text'];
+        //On sélectionne les 20 commentaires les plus récents.
+        $req = $this->db->prepare('SELECT comments.content, DATE_FORMAT( published_date, "%d/%m/%Y") AS published_date, users.pseudo FROM comments INNER JOIN users ON comments.id_user = users.id WHERE id_text = :id_text ORDER BY published_date  DESC LIMIT 20');
+        $req->execute(array(
+            'id_text' => $id_text));
 
         $res = $req->fetchAll();
         echo json_encode($res);
@@ -41,10 +43,16 @@ class Home_model extends Model
 
     public function comments()
     {
-        $content = $_POST['comment'];
+        $id_text = $_POST['id_text'];
+        $content = $_POST['content'];
+        Session::init();
+        $id = Session::get('id');
 
-        $req = $this->db->prepare('INSERT INTO comments (content) VALUES(:content)');
+        $req = $this->db->prepare('INSERT INTO comments (content, id_user, id_text) VALUES(:content, :id_user, :id_text)');
         $req->execute(array(
-            'content' => $content));
+            'content' => $content,
+            'id_user' => $id,
+            'id_text' => $id_text));
+
     }
 }

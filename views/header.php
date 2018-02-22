@@ -1,4 +1,14 @@
 <?php Session::init(); ?>
+<?php
+  if (!empty(Session::get('pseudo'))) {
+    ?>
+<script> 
+  var id ="<?php echo $_SESSION['id']; ?>"
+  var pseudo ="<?php echo $_SESSION['pseudo']; ?>"
+</script>
+ <?php
+            } ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,6 +18,7 @@
     <link href="<?php echo  URL; ?>lib/themeAdd/css/clean-blog.css" rel="stylesheet">
     <link href="<?php echo  URL; ?>lib/css/admin.css" rel="stylesheet">
     <link href="<?php echo  URL; ?>lib/css/reading.css" rel="stylesheet">
+     <link href="<?php echo  URL; ?>lib/css/home.css" rel="stylesheet">
     <link href="<?php echo  URL; ?>lib/themeAdd/dep/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->

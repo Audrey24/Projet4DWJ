@@ -27,7 +27,7 @@ class Home extends Controller
 
     public function comments()
     {
-        $this->model->getNews();
+        $this->model->comments();
     }
 
     //Fonction qui obtient les 5 derniers articles.
