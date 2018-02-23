@@ -9,7 +9,6 @@
   <thead class="thead-dark">
       <tr>
         <th class="fuzzy-search" data-sort="id" scope="col">Id</th>
-        <th class="fuzzy-search" data-sort="type" scope="col">Type</th>
         <th class="fuzzy-search" data-sort="title" scope="col">Titre</th>
         <th class="fuzzy-search" data-sort="content" scope="col">Contenu</th>
         <th class="fuzzy-search" data-sort="date" scope="col">Publié le</th>

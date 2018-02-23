@@ -15,7 +15,7 @@
   border: solid 0.5px  #138496;
   border-radius: 10px;
   padding: 20px;
-  
+
 }
 
 #newspage h3 {
@@ -40,5 +40,16 @@ td a:hover {
 	font-weight: bold;
 	font-size: 1.3em;
 	text-decoration: underline;
+}
 
+.delete_comments:hover {
+  color: red;
+}
+
+.date_comments {
+	font-style: italic;
+}
+
+.pseudo_comments {
+	font-weight: bold;
 }

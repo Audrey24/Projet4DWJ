@@ -1,13 +1,14 @@
 <?php Session::init(); ?>
 <?php
   if (!empty(Session::get('pseudo'))) {
-    ?>
-<script> 
+      ?>
+<script>
   var id ="<?php echo $_SESSION['id']; ?>"
   var pseudo ="<?php echo $_SESSION['pseudo']; ?>"
+  var role ="<?php echo $_SESSION['role']; ?>"
 </script>
  <?php
-            } ?>
+  } ?>
 
 <!DOCTYPE html>
 <html>

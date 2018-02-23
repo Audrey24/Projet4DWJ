@@ -37,3 +37,20 @@
   background-color: #ececec;
   color: black !important;
 }
+
+.read_chapter:hover {
+  background-color: #ececec;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.title_chapter {
+  font-weight: bold;
+}
+
+#lastChapters {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3em;
+  text-decoration: underline;
+}

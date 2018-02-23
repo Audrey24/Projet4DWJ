@@ -31,13 +31,13 @@ class Admin extends Controller
         $this->model->textsList($type);
     }
 
-    public function delete($id)
+    public function delete()
     {
-        $this->model->delete($id);
+        $this->model->delete();
     }
 
-    public function getOne($id)
+    public function getOne()
     {
-        $this->model->getOne($id);
+        $this->model->getOne();
     }
 }

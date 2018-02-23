@@ -13,4 +13,9 @@ class Last_chapters extends Controller
     {
         $this->view->render('last_chapter/chapters', 'lib/images/livre.jpg');
     }
+
+    public function getChapters()
+    {
+        $this->model->getChapters();
+    }
 }

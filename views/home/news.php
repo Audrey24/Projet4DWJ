@@ -19,18 +19,24 @@
       <div id="commentMsg"></div></br>
       <button type="submit" class="btn btn-success col-lg-12 col-md-12" id="commenter">Commenter</button>
       <?php
-} else { ?> <div id="connexionMsg">Vous devez être connecté pour pouvoir laisser un commentaire !</div></br><?php
-            } ?>
+} else {
+        ?> <div id="connexionMsg">Vous devez être connecté pour pouvoir laisser un commentaire !</div></br><?php
+    } ?>
 
     </div></br>
 
   <div class="col-lg-7 col-sm-12 offset-lg-1 control-group">
     <p id='lastComments'>Derniers commentaires</p>
-    <table class="table table-striped"> 
-      <tbody id="contain_comments"></tbody>   
+    <table class="table table-sm">
+      <tbody id="contain_comments">
+      </tbody>
     </table>
+    <div id="del_comment"></div>
   </div>
 </div>
 </div>
 
+
+
 <script type="text/javascript" src="../../lib/js/comments.js" defer></script>
+<script src="../../lib/other/js/jquery.emojiFace.js"></script>

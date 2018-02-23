@@ -25,53 +25,210 @@ class Admin_model extends Model
         //Si l'id est déjà saisi, on le récupère dans une var (le texte est donc déjà existant)
         if (!empty($_POST['id'])) {
             $id = $_POST['id'];
-
             //Et on effectue une mise à jour du texte.
-            $req = $this->db->prepare('UPDATE texts SET type = :type, title = :title, content = :content, deferred_date = :deferred_date WHERE id= :id');
-            $req->execute(array(
-            'id' => $id,
-            'type' => $type,
-            'title' => $title,
-            'content' => $content,
-            'deferred_date' =>$deferred_date));
+            switch ($type) {
+              case 'Article':
+                $this->updateNews($id, $title, $content, $deferred_date);
+                break;
+
+              case 'Chapitre':
+                $this->updateChapters($id, $title, $content, $deferred_date);
+                break;
+
+              case 'Brouillon':
+                $this->updateDrafts($id, $title, $content, $deferred_date);
+                break;
+
+              default:
+                echo "Erreur";
+                break;
+            }
         } else {
             //Sinon cela veut dire que c'est un nouveau texte et donc on l'insère dans la Bdd.
-            $req = $this->db->prepare('INSERT INTO texts (type, title, content, deferred_date) VALUES(:type, :title, :content, :deferred_date)');
-            $req->execute(array(
-                  'type' => $type,
-                  'title' => $title,
-                  'content' => $content,
-                  'deferred_date' =>$deferred_date));
+            switch ($type) {
+              case 'Article':
+                $this->insertNews($title, $content, $deferred_date);
+                break;
+
+              case 'Chapitre':
+                $this->insertChapters($title, $content, $deferred_date);
+                break;
+
+              case 'Brouillon':
+                $this->insertDrafts($title, $content, $deferred_date);
+                break;
+
+              default:
+                echo "Erreur";
+                break;
+            }
         }
     }
 
     //Fonction qui récupère les textes de la bdd.
     public function textsList($type)
     {
-        $req = $this->db->prepare('SELECT id, type, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date, DATE_FORMAT( deferred_date, "%d/%m/%Y") AS deferred_date FROM texts WHERE type = :type ORDER BY publication_date  DESC ');
-        $req->execute(array(
-          "type" => $type));
+        switch ($type) {
+        case 'Article':
+          $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date, DATE_FORMAT( deferred_date, "%d/%m/%Y") AS deferred_date FROM news ORDER BY publication_date  DESC ');
+          $req->execute(array(
+            "type" => $type));
 
-        $res = $req->fetchAll();
-        echo json_encode($res);
+          $res = $req->fetchAll();
+          echo json_encode($res);
+        break;
+
+        case 'Chapitre':
+          $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date, DATE_FORMAT( deferred_date, "%d/%m/%Y") AS deferred_date FROM chapters ORDER BY publication_date  DESC ');
+          $req->execute(array(
+            "type" => $type));
+
+          $res = $req->fetchAll();
+          echo json_encode($res);
+        break;
+
+        case 'Brouillon':
+          $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date, DATE_FORMAT( deferred_date, "%d/%m/%Y") AS deferred_date FROM drafts ORDER BY publication_date  DESC ');
+          $req->execute(array(
+            "type" => $type));
+
+            $res = $req->fetchAll();
+            echo json_encode($res);
+        break;
+
+        default:
+          echo "Erreur, pas de textes";
+        break;
+      }
     }
 
     //Fonction pour suppression les entrées de la Bdd par rapport à l'id sélectionné.
-    public function delete($id)
+    public function delete()
     {
-        $req = $this->db->prepare('DELETE FROM texts WHERE id = :id');
+        $id = $_POST['id'];
+        $type = $_POST['type'];
+      
+        switch ($type) {
+      case 'Article':
+        $req = $this->db->prepare('DELETE FROM news WHERE id = :id');
         $req->execute(array(
-        'id' => $id));
+          'id' => $id));
+      break;
+
+      case 'Chapitre':
+        $req = $this->db->prepare('DELETE FROM chapters WHERE id = :id');
+        $req->execute(array(
+          'id' => $id));
+      break;
+
+      case 'Brouillon':
+        $req = $this->db->prepare('DELETE FROM drafts WHERE id = :id');
+        $req->execute(array(
+          'id' => $id));
+      break;
+
+      default:
+        echo "Erreur, pas de textes";
+      break;
+    }
     }
 
     //Fonction pour récupèrer un texte en fonction de l'id sélectionné.
-    public function getOne($id)
+    public function getOne()
     {
-        $req = $this->db->prepare('SELECT id, type, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date, DATE_FORMAT( deferred_date, "%d/%m/%Y") AS deferred_date  FROM texts WHERE id = :id ');
-        $req->execute(array(
-        'id' => $id));
+        $id = $_POST['id'];
+        $type = $_POST['type'];
 
+        switch ($type) {
+      case 'Article':
+        $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date, DATE_FORMAT( deferred_date, "%d/%m/%Y") AS deferred_date  FROM news WHERE id = :id ');
+        $req->execute(array(
+          'id' => $id));
         $res = $req->fetch();
         echo json_encode($res);
+
+      break;
+
+      case 'Chapitre':
+        $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date, DATE_FORMAT( deferred_date, "%d/%m/%Y") AS deferred_date  FROM chapters WHERE id = :id ');
+        $req->execute(array(
+          'id' => $id));
+        $res = $req->fetch();
+        echo json_encode($res);
+
+      break;
+
+      case 'Brouillon':
+        $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date, DATE_FORMAT( deferred_date, "%d/%m/%Y") AS deferred_date  FROM drafts WHERE id = :id ');
+        $req->execute(array(
+          'id' => $id));
+        $res = $req->fetch();
+        echo json_encode($res);
+
+      break;
+
+      default:
+        echo "Erreur, pas de textes";
+      break;
+    }
+    }
+
+    //Fonctions qui mettent à jour les textes.
+    public function updateNews($id, $title, $content, $deferred_date)
+    {
+        $req = $this->db->prepare('UPDATE news SET  title = :title, content = :content, deferred_date = :deferred_date WHERE id= :id');
+        $req->execute(array(
+          'id' => $id,
+          'title' => $title,
+          'content' => $content,
+          'deferred_date' => $deferred_date));
+    }
+
+    public function updateChapters($id, $title, $content, $deferred_date)
+    {
+        $req = $this->db->prepare('UPDATE chapters SET  title = :title, content = :content, deferred_date = :deferred_date WHERE id= :id');
+        $req->execute(array(
+          'id' => $id,
+          'title' => $title,
+          'content' => $content,
+          'deferred_date' =>$deferred_date));
+    }
+
+    public function updateDrafts($id, $title, $content, $deferred_date)
+    {
+        $req = $this->db->prepare('UPDATE drafts SET  title = :title, content = :content, deferred_date = :deferred_date WHERE id= :id');
+        $req->execute(array(
+          'id' => $id,
+          'title' => $title,
+          'content' => $content,
+          'deferred_date' =>$deferred_date));
+    }
+
+    //Fonctions qui insèrent les textes en BDD.
+    public function insertNews($title, $content, $deferred_date)
+    {
+        $req = $this->db->prepare('INSERT INTO news (title, content, deferred_date) VALUES(:title, :content, :deferred_date)');
+        $req->execute(array(
+          'title' => $title,
+          'content' => $content,
+          'deferred_date' =>$deferred_date));
+    }
+
+    public function insertChapters($title, $content, $deferred_date)
+    {
+        $req = $this->db->prepare('INSERT INTO chapters (title, content, deferred_date) VALUES(:title, :content, :deferred_date)');
+        $req->execute(array(
+        'title' => $title,
+        'content' => $content,
+        'deferred_date' =>$deferred_date));
+    }
+
+    public function insertDrafts($title, $content, $deferred_date)
+    {
+        $req = $this->db->prepare('INSERT INTO drafts (title, content, deferred_date) VALUES(:title, :content, :deferred_date)');
+        $req->execute(array(
+          'title' => $title,
+          'content' => $content,
+          'deferred_date' =>$deferred_date));
     }
 }

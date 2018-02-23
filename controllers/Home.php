@@ -25,6 +25,7 @@ class Home extends Controller
         $this->view->render('home/news', 'lib/images/news.jpg');
     }
 
+    //Fonction pour commenter
     public function comments()
     {
         $this->model->comments();
@@ -36,8 +37,15 @@ class Home extends Controller
         $this->model->getNews();
     }
 
+    //Fonction qui obtient les 20 derniers commentaires.
     public function getComments()
     {
         $this->model->getComments();
+    }
+
+    //Fonction pour supprimer les commentaires.
+    public function delete_comments($id)
+    {
+        $this->model->delete_comments($id);
     }
 }
