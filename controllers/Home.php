@@ -48,4 +48,9 @@ class Home extends Controller
     {
         $this->model->delete_comments($id);
     }
+
+    public function dislikeComments()
+    {
+        $this->model->dislikeComments();
+    }
 }

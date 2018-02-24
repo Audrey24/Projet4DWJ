@@ -36,7 +36,6 @@
 </div>
 </div>
 
-
+<?php include("modalComments.php");?>
 
 <script type="text/javascript" src="../../lib/js/comments.js" defer></script>
-<script src="../../lib/other/js/jquery.emojiFace.js"></script>

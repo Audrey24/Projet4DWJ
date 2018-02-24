@@ -1,7 +1,7 @@
 <div id="tableau">
   <div>
 <input class="search col-lg-3" placeholder="RECHERCHE"/>
-<button class="sort btn btn-info col-lg-3 offset-lg-1" data-sort="type">Trier par type</button>
+<button class="sort btn btn-info col-lg-3 offset-lg-1" data-sort="title">Trier par titre</button>
 <button class="sort btn btn-info col-lg-3 offset-lg-1" data-sort="date">Trier par date</button>
 </div></br>
 

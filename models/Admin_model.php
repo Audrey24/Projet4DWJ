@@ -107,7 +107,7 @@ class Admin_model extends Model
     {
         $id = $_POST['id'];
         $type = $_POST['type'];
-      
+
         switch ($type) {
       case 'Article':
         $req = $this->db->prepare('DELETE FROM news WHERE id = :id');
@@ -230,5 +230,45 @@ class Admin_model extends Model
           'title' => $title,
           'content' => $content,
           'deferred_date' =>$deferred_date));
+    }
+
+    public function getDislike($type)
+    {
+        switch ($type) {
+        case 'Article':
+        $req = $this->db->prepare('SELECT comments.id, comments.content, users.pseudo, DATE_FORMAT( published_date, "%d/%m/%Y") AS published_date FROM comments INNER JOIN users ON comments.id_user = users.id WHERE dislike > 3');
+        $req->execute();
+        $res = $req->fetchAll();
+        echo json_encode($res);
+
+        break;
+
+          case 'Chapitre':
+          $req = $this->db->prepare('SELECT commentschapter.id, commentschapter.content, users.pseudo, DATE_FORMAT( published_date, "%d/%m/%Y") AS published_date FROM commentschapter INNER JOIN users ON commentschapter.id_user = users.id WHERE dislike > 3');
+          $req->execute();
+          $res = $req->fetchAll();
+          echo json_encode($res);
+          break;
+        }
+    }
+
+    public function deleteComments()
+    {
+        $id = $_POST['id'];
+        $type = $_POST['type'];
+
+        switch ($type) {
+      case 'Article':
+        $req = $this->db->prepare('DELETE FROM comments WHERE id = :id');
+        $req->execute(array(
+          'id' => $id));
+      break;
+
+      case 'Chapitre':
+        $req = $this->db->prepare('DELETE FROM commentschapter WHERE id = :id');
+        $req->execute(array(
+          'id' => $id));
+      break;
+    }
     }
 }

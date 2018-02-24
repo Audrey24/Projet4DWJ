@@ -67,4 +67,14 @@ class Home_model extends Model
         'id' => $id));
         echo($id);
     }
+
+    public function dislikeComments()
+    {
+        $id = $_POST['id'];
+        echo $id;
+
+        $req = $this->db->prepare('UPDATE comments SET dislike = dislike+1 WHERE id= :id');
+        $req->execute(array(
+        'id' => $id));
+    }
 }

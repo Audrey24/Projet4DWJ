@@ -10,7 +10,7 @@
       <!-- Contenu de la fenêtre modale-->
       <div class="modal-body">
         <div id="body_modalDelete">
-          <p>Êtes-vous certains de vouloir supprimer ce fichier ?</p>
+          <p>Êtes-vous certain de vouloir supprimer ce fichier ?</p>
           <p>Une fois validé, il sera supprimé de manière définitive !</p>
         </div></br>
         <button type="button" class="btn btn-success col-lg-3 offset-lg-1 col-sm-3 offset-sm-1 delete">Valider</button>

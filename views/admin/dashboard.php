@@ -20,7 +20,12 @@
                           <li class='updateCol2' data-file="edit" data-type="Brouillon">Brouillons</li>
                         </ul>
 
-                <li><i class="fa fa-comments fa-lg"></i></i> Commentaires</li>
+                <li data-toggle="collapse" data-target="#comment" class="collapsed active">
+                  <i class="fa fa-comments fa-lg"></i> Commentaires signalés</li>
+                    <ul class="sub-menu collapse" id="comment">
+                      <li class='updateCol2' data-file="dislikeComments" data-type="Article">Articles</li>
+                      <li class='updateCol2' data-file="dislikeComments" data-type="Chapitre">Chapitres</li>
+                    </ul>
             </ul>
         </div>
       </div>

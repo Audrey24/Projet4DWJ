@@ -1,9 +1,6 @@
 <?php
 Session::init();
 Session::set('current', $this->data['id']);
-
-//TODO
-//gerer la base de données
  ?>
 
 <div id="book" class="col-lg-12" data-id="<?php echo $this->data['id']; ?>">
@@ -26,32 +23,28 @@ $prev = $this->data['id']-1; ?>
 <div class="container">
   <div class="row">
       <div class="col-lg-3 col-sm-12 offset-lg-1 control-group">
-    <?php if (!empty(Session::get('pseudo'))) {
-    ?>
+        <div class="form-group floating-label-form-group controls">
+          <label>Commenter</label>
+          <textarea placeholder="Votre commentaire" id="commentChapter" name ="commentChapter" required data-validation-required-message="Veuillez écrire un commentaire."></textarea>
+        </div>
+        <div id="commentChp"></div></br>
+        <button type="submit" class="btn btn-success col-lg-12 col-md-12" id="commenter_chap">Commenter</button>
+      </div></br>
 
-      <div class="form-group floating-label-form-group controls">
-        <label>Commenter</label>
-        <textarea placeholder="Votre commentaire" id="commentChapter" name ="commentChapter" required data-validation-required-message="Veuillez écrire un commentaire."></textarea>
+      <div class="col-lg-7 col-sm-12 offset-lg-1 control-group">
+        <p id='lastComments'>Derniers commentaires</p>
+        <table class="table table-sm">
+          <tbody id="contain_commentsChap">
+          </tbody>
+        </table>
+        <div id="dislike_commentchap"></div>
       </div>
-      <div id="commentChp"></div></br>
-      <button type="submit" class="btn btn-success col-lg-12 col-md-12" id="commenter_chap">Commenter</button>
-      <?php
-} else {
-        ?> <div id="connexionMsgChapter">Vous devez être connecté pour pouvoir laisser un commentaire !</div></br><?php
-    } ?>
-
-    </div></br>
-
-  <div class="col-lg-7 col-sm-12 offset-lg-1 control-group">
-    <p id='lastComments'>Derniers commentaires</p>
-    <table class="table table-sm">
-      <tbody id="contain_commentsChap">
-      </tbody>
-    </table>
-    <div id="delete_commentchap"></div>
-  </div>
+    </div>
 </div>
-</div>
+
+<?php include("modalCommentChapter.php");?>
+
+<script type="text/javascript" src="../../lib/js/comments_chapter.js" defer></script>
 
 <!--<script type="text/javascript" src="lib/themeAdd/turn.min.js" defer></script>-->
 <!--<script type="text/javascript" src="lib/themeAdd/readbook.js" defer></script>-->

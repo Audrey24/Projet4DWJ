@@ -40,4 +40,14 @@ class Admin extends Controller
     {
         $this->model->getOne();
     }
+
+    public function getDislike($type)
+    {
+        $this->model->getDislike($type);
+    }
+
+    public function deleteComments()
+    {
+        $this->model->deleteComments();
+    }
 }

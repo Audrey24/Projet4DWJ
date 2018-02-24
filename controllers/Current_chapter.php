@@ -27,4 +27,24 @@ class Current_chapter extends Controller
         $this->view->addData($this->model->getOneChapter($id_chap));
         $this->view->render('current_chapter/reading', 'lib/images/chapitre.jpg');
     }
+
+    public function commentChapter()
+    {
+        $this->model->commentChapter();
+    }
+
+    public function getCommentsChapter()
+    {
+        $this->model->getCommentsChapter();
+    }
+
+    public function delete_commentsChapter($id)
+    {
+        $this->model->delete_commentsChapter($id);
+    }
+
+    public function dislikeComment()
+    {
+        $this->model->dislikeComment();
+    }
 }
