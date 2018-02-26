@@ -23,12 +23,18 @@ $prev = $this->data['id']-1; ?>
 <div class="container">
   <div class="row">
       <div class="col-lg-3 col-sm-12 offset-lg-1 control-group">
+        <?php if (!empty(Session::get('pseudo'))) {
+    ?>
         <div class="form-group floating-label-form-group controls">
           <label>Commenter</label>
           <textarea placeholder="Votre commentaire" id="commentChapter" name ="commentChapter" required data-validation-required-message="Veuillez écrire un commentaire."></textarea>
         </div>
         <div id="commentChp"></div></br>
         <button type="submit" class="btn btn-success col-lg-12 col-md-12" id="commenter_chap">Commenter</button>
+        <?php
+} else {
+        ?> <div class="connexionMsg">Vous devez être connecté pour pouvoir laisser un commentaire !</div></br><?php
+    } ?>
       </div></br>
 
       <div class="col-lg-7 col-sm-12 offset-lg-1 control-group">

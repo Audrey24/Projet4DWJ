@@ -65,16 +65,22 @@ class Home_model extends Model
         $req = $this->db->prepare('DELETE FROM comments WHERE id = :id');
         $req->execute(array(
         'id' => $id));
-        echo($id);
+
+        $req = $this->db->prepare('DELETE FROM report_news WHERE id_comment = :id_comment');
+        $req->execute(array(
+        'id_comment' => $id));
     }
 
     public function dislikeComments()
     {
-        $id = $_POST['id'];
+        $id_comment = $_POST['id_comment'];
+        Session::init();
+        $id_user = Session::get('id');
         echo $id;
 
-        $req = $this->db->prepare('UPDATE comments SET dislike = dislike+1 WHERE id= :id');
+        $req = $this->db->prepare('INSERT INTO report_news (id_user, id_comment) VALUES(:id_user, :id_comment)');
         $req->execute(array(
-        'id' => $id));
+        'id_user' => $id_user,
+        'id_comment' => $id_comment));
     }
 }

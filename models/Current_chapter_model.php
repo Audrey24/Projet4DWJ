@@ -64,16 +64,22 @@ class Current_chapter_model extends Model
         $req = $this->db->prepare('DELETE FROM commentschapter WHERE id = :id');
         $req->execute(array(
         'id' => $id));
-        echo($id);
+
+        $req = $this->db->prepare('DELETE FROM report_chapters WHERE id_comment = :id_comment');
+        $req->execute(array(
+        'id_comment' => $id));
     }
 
     public function dislikeComment()
     {
-        $id = $_POST['id'];
+        $id_comment = $_POST['id_comment'];
+        Session::init();
+        $id_user = Session::get('id');
         echo $id;
 
-        $req = $this->db->prepare('UPDATE commentschapter SET dislike = dislike+1 WHERE id= :id');
+        $req = $this->db->prepare('INSERT INTO report_chapters (id_user, id_comment) VALUES(:id_user, :id_comment)');
         $req->execute(array(
-        'id' => $id));
+        'id_user' => $id_user,
+        'id_comment' => $id_comment));
     }
 }

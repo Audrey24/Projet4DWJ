@@ -50,4 +50,9 @@ class Admin extends Controller
     {
         $this->model->deleteComments();
     }
+
+    public function validComments()
+    {
+        $this->model->validComments();
+    }
 }

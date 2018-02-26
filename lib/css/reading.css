@@ -54,3 +54,11 @@
   font-size: 1.3em;
   text-decoration: underline;
 }
+
+.delete_comChap:hover {
+  color: red;
+}
+
+.btnDislike :hover {
+  color: orange;
+}

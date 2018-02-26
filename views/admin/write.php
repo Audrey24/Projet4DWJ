@@ -24,7 +24,7 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="form-group"> <!-- Date input -->
                 <label class="control-label" for="date">Publication différée</label>
-                <input class="form-control" id="deferred_date" name="deferred_date" placeholder="MM/DD/YYY" type="text"/>
+                <input class="form-control" id="deferred_date" name="deferred_date" placeholder="AAAA/MM/JJ" type="text"/>
               </div>
           </div>
         </div>

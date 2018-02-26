@@ -167,6 +167,7 @@ class Login_model extends Model
         //Suppression et redirection.
         session_destroy();
 
+
         header('Location: ../home');
     }
 }

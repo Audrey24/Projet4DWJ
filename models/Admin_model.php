@@ -113,12 +113,21 @@ class Admin_model extends Model
         $req = $this->db->prepare('DELETE FROM news WHERE id = :id');
         $req->execute(array(
           'id' => $id));
-      break;
+
+        $req = $this->db->prepare('DELETE FROM comments WHERE id_text = :id_text');
+        $req->execute(array(
+          'id_text' => $id));
+
+        break;
 
       case 'Chapitre':
         $req = $this->db->prepare('DELETE FROM chapters WHERE id = :id');
         $req->execute(array(
           'id' => $id));
+
+        $req = $this->db->prepare('DELETE FROM commentschapter WHERE id_chapter = :id_chapter');
+        $req->execute(array(
+          'id_chapter' => $id));
       break;
 
       case 'Brouillon':
@@ -236,7 +245,15 @@ class Admin_model extends Model
     {
         switch ($type) {
         case 'Article':
-        $req = $this->db->prepare('SELECT comments.id, comments.content, users.pseudo, DATE_FORMAT( published_date, "%d/%m/%Y") AS published_date FROM comments INNER JOIN users ON comments.id_user = users.id WHERE dislike > 3');
+        $req = $this->db->prepare('SELECT report_news.id_comment, COUNT(*) AS count, comments.id, comments.content, DATE_FORMAT(comments.published_date, "%d/%m/%Y") AS published_date, comments.id_user, T.pseudo
+                                    FROM report_news
+                                    INNER JOIN comments ON report_news.id_comment = comments.id
+                                    INNER JOIN (
+                                      SELECT users.pseudo AS pseudo, users.id FROM users INNER JOIN comments
+                                      ON users.id = comments.id_user ) AS T
+                                    ON comments.id_user = T.id
+                                    GROUP BY id_comment
+                                    HAVING COUNT(*) >2');
         $req->execute();
         $res = $req->fetchAll();
         echo json_encode($res);
@@ -244,7 +261,16 @@ class Admin_model extends Model
         break;
 
           case 'Chapitre':
-          $req = $this->db->prepare('SELECT commentschapter.id, commentschapter.content, users.pseudo, DATE_FORMAT( published_date, "%d/%m/%Y") AS published_date FROM commentschapter INNER JOIN users ON commentschapter.id_user = users.id WHERE dislike > 3');
+          $req = $this->db->prepare('SELECT report_chapters.id_comment, COUNT(*) AS count, commentschapter.id, commentschapter.content, DATE_FORMAT(commentschapter.published_date, "%d/%m/%Y") AS published_date, commentschapter.id_user, K.pseudo
+                                      FROM report_chapters
+                                      INNER JOIN commentschapter ON report_chapters.id_comment = commentschapter.id
+                                      INNER JOIN (
+                                        SELECT users.pseudo AS pseudo, users.id FROM users INNER JOIN commentschapter
+                                        ON users.id = commentschapter.id_user ) AS K
+                                      ON commentschapter.id_user = K.id
+                                      GROUP BY id_comment
+                                      HAVING COUNT(*) >2');
+
           $req->execute();
           $res = $req->fetchAll();
           echo json_encode($res);
@@ -256,19 +282,51 @@ class Admin_model extends Model
     {
         $id = $_POST['id'];
         $type = $_POST['type'];
+        echo($id);
 
         switch ($type) {
       case 'Article':
         $req = $this->db->prepare('DELETE FROM comments WHERE id = :id');
         $req->execute(array(
           'id' => $id));
+
+        $req = $this->db->prepare('DELETE FROM report_news WHERE id_comment = :id_comment');
+        $req->execute(array(
+          'id_comment' => $id));
+
       break;
 
       case 'Chapitre':
         $req = $this->db->prepare('DELETE FROM commentschapter WHERE id = :id');
         $req->execute(array(
           'id' => $id));
+
+        $req = $this->db->prepare('DELETE FROM report_chapters WHERE id_comment = :id_comment');
+        $req->execute(array(
+          'id_comment' => $id));
       break;
+      }
     }
+
+    public function validComments()
+    {
+        $id = $_POST['id'];
+        $type = $_POST['type'];
+        echo($id);
+
+        switch ($type) {
+          case 'Article':
+          $req = $this->db->prepare('DELETE FROM report_news WHERE id_comment = :id_comment');
+          $req->execute(array(
+            'id_comment' => $id));
+
+          break;
+
+          case 'Chapitre':
+          $req = $this->db->prepare('DELETE FROM report_chapters WHERE id_comment = :id_comment');
+          $req->execute(array(
+            'id_comment' => $id));
+          break;
+        }
     }
 }
