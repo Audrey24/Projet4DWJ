@@ -53,5 +53,5 @@ $prev = $this->data['id']-1; ?>
 
 <script type="text/javascript" src="../../lib/js/comments_chapter.js" defer></script>
 
-<!--<script type="text/javascript" src="lib/themeAdd/turn.min.js" defer></script>-->
-<!--<script type="text/javascript" src="lib/themeAdd/readbook.js" defer></script>-->
+<!--<script type="text/javascript" src="../../lib/themeAdd/turn.min.js" defer></script>-->
+<!--<script type="text/javascript" src="../../lib/themeAdd/readbook.js" defer></script>-->

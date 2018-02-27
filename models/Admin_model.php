@@ -103,6 +103,8 @@ class Admin_model extends Model
     }
 
     //Fonction pour suppression les entrées de la Bdd par rapport à l'id sélectionné.
+    //Obligé de faire deux requêtes plutôt qu'une jointure car impossible avec la jointure de supprimer
+    //un chapitre sans commentaire. Il fallait absolument qu'il est lien entre les 2 tables.
     public function delete()
     {
         $id = $_POST['id'];
@@ -111,22 +113,24 @@ class Admin_model extends Model
         switch ($type) {
           case 'Article':
 
-          $req = $this->db->prepare('DELETE news , comments FROM news  INNER JOIN comments
-                                 WHERE news.id = comments.id_text AND news.id= :id');
+          $req = $this->db->prepare('DELETE FROM news WHERE news.id = :id');
           $req->execute(array(
             'id' => $id));
 
+          $req = $this->db->prepare(' DELETE FROM comments WHERE comments.id_text = :id');
+          $req->execute(array(
+            'id' => $id));
           break;
 
           case 'Chapitre':
 
-          $req = $this->db->prepare('DELETE chapters , commentschapter FROM chapters
-                                     INNER JOIN commentschapter
-                                     WHERE chapters.id = commentschapter.id_chapter
-                                     AND chapters.id= :id');
+          $req = $this->db->prepare('DELETE  FROM chapters WHERE chapters.id = :id');
           $req->execute(array(
            'id' => $id));
 
+           $req = $this->db->prepare(' DELETE FROM commentschapter WHERE commentschapter.id_chapter = :id');
+           $req->execute(array(
+             'id' => $id));
           break;
 
           case 'Brouillon':
@@ -286,18 +290,23 @@ class Admin_model extends Model
 
         switch ($type) {
       case 'Article':
-        $req = $this->db->prepare('DELETE comments, report_news FROM comments INNER JOIN report_news
-                                   WHERE comments.id = report_news.id_comment AND id = :id');
+        $req = $this->db->prepare('DELETE FROM comments WHERE comments.id = :id');
         $req->execute(array(
           'id' => $id));
 
+        $req = $this->db->prepare('DELETE  FROM report_news WHERE report_news.id_comment = :id');
+        $req->execute(array(
+          'id' => $id));
       break;
 
       case 'Chapitre':
-        $req = $this->db->prepare('DELETE commentschapter, report_chapters FROM commentschapter INNER JOIN report_chapters
-                                  WHERE commentschapter.id = report_chapters.id_comment AND id = :id');
+        $req = $this->db->prepare('DELETE FROM commentschapter WHERE commentschapter.id = :id');
         $req->execute(array(
           'id' => $id));
+
+          $req = $this->db->prepare('DELETE  FROM report_chapters WHERE report_chapters.id_comment = :id');
+          $req->execute(array(
+           'id' => $id));
       break;
       }
     }
