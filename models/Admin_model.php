@@ -109,37 +109,37 @@ class Admin_model extends Model
         $type = $_POST['type'];
 
         switch ($type) {
-      case 'Article':
-        $req = $this->db->prepare('DELETE FROM news WHERE id = :id');
-        $req->execute(array(
+          case 'Article':
+
+          $req = $this->db->prepare('DELETE news , comments FROM news  INNER JOIN comments
+                                 WHERE news.id = comments.id_text AND news.id= :id');
+          $req->execute(array(
+            'id' => $id));
+
+          break;
+
+          case 'Chapitre':
+
+          $req = $this->db->prepare('DELETE chapters , commentschapter FROM chapters
+                                     INNER JOIN commentschapter
+                                     WHERE chapters.id = commentschapter.id_chapter
+                                     AND chapters.id= :id');
+          $req->execute(array(
+           'id' => $id));
+
+          break;
+
+          case 'Brouillon':
+
+          $req = $this->db->prepare('DELETE FROM drafts WHERE id = :id');
+          $req->execute(array(
           'id' => $id));
+          break;
 
-        $req = $this->db->prepare('DELETE FROM comments WHERE id_text = :id_text');
-        $req->execute(array(
-          'id_text' => $id));
-
-        break;
-
-      case 'Chapitre':
-        $req = $this->db->prepare('DELETE FROM chapters WHERE id = :id');
-        $req->execute(array(
-          'id' => $id));
-
-        $req = $this->db->prepare('DELETE FROM commentschapter WHERE id_chapter = :id_chapter');
-        $req->execute(array(
-          'id_chapter' => $id));
-      break;
-
-      case 'Brouillon':
-        $req = $this->db->prepare('DELETE FROM drafts WHERE id = :id');
-        $req->execute(array(
-          'id' => $id));
-      break;
-
-      default:
-        echo "Erreur, pas de textes";
-      break;
-    }
+          default:
+          echo "Erreur, pas de textes";
+          break;
+        }
     }
 
     //Fonction pour récupèrer un texte en fonction de l'id sélectionné.
@@ -286,24 +286,18 @@ class Admin_model extends Model
 
         switch ($type) {
       case 'Article':
-        $req = $this->db->prepare('DELETE FROM comments WHERE id = :id');
+        $req = $this->db->prepare('DELETE comments, report_news FROM comments INNER JOIN report_news
+                                   WHERE comments.id = report_news.id_comment AND id = :id');
         $req->execute(array(
           'id' => $id));
-
-        $req = $this->db->prepare('DELETE FROM report_news WHERE id_comment = :id_comment');
-        $req->execute(array(
-          'id_comment' => $id));
 
       break;
 
       case 'Chapitre':
-        $req = $this->db->prepare('DELETE FROM commentschapter WHERE id = :id');
+        $req = $this->db->prepare('DELETE commentschapter, report_chapters FROM commentschapter INNER JOIN report_chapters
+                                  WHERE commentschapter.id = report_chapters.id_comment AND id = :id');
         $req->execute(array(
           'id' => $id));
-
-        $req = $this->db->prepare('DELETE FROM report_chapters WHERE id_comment = :id_comment');
-        $req->execute(array(
-          'id_comment' => $id));
       break;
       }
     }

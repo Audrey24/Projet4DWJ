@@ -20,7 +20,8 @@
       <button type="submit" class="btn btn-success col-lg-12 col-md-12" id="commenter">Commenter</button>
       <?php
 } else {
-        ?> <div class="connexionMsg">Vous devez être connecté pour pouvoir laisser un commentaire !</div></br><?php
+        ?> <div class="connexionMsg">Vous devez être connecté pour pouvoir laisser un commentaire !</div></br>
+           <button class="btn btn-info col-lg-12 col-md-12" data-toggle="modal" data-target="#myModal">Connexion</button><?php
     } ?>
 
     </div></br>
