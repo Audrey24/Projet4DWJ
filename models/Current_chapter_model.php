@@ -30,6 +30,32 @@ class Current_chapter_model extends Model
         return $res;
     }
 
+    //Fonction sur les boutons de lecture des chapitres.
+    public function next()
+    {
+        $id= $_POST['id'];
+
+        //On récupère tous les chap dont l'id est supérieur au chap actuel.
+        //(plus efficace que de faire +1 - évite les pb quand les chap sont supprimés et que le id ne suivent donc pas )
+        $req = $this->db->prepare('SELECT id FROM chapters WHERE id > :id ORDER BY id ASC LIMIT 1');
+        $req->execute(array('id' => $id));
+
+        $res = $req->fetch();
+        echo $res['id'];
+    }
+
+    public function prev()
+    {
+        $id= $_POST['id'];
+
+        //On récupère tous les chap dont l'id est inférieur au chap actuel.
+        $req = $this->db->prepare('SELECT id FROM chapters WHERE id < :id ORDER BY id DESC LIMIT 1');
+        $req->execute(array('id' => $id));
+
+        $res = $req->fetch();
+        echo $res['id'];
+    }
+
     public function commentChapter()
     {
         //On récupère l'id du texte que l'on commente et les données du commentaire.

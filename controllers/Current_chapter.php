@@ -28,6 +28,11 @@ class Current_chapter extends Controller
         $this->view->render('current_chapter/reading', 'lib/images/chapitre.jpg');
     }
 
+    public function no_read()
+    {
+        $this->view->render('current_chapter/no_read', 'lib/images/chapitre.jpg');
+    }
+
     public function commentChapter()
     {
         $this->model->commentChapter();
@@ -46,5 +51,15 @@ class Current_chapter extends Controller
     public function dislikeComment()
     {
         $this->model->dislikeComment();
+    }
+
+    public function prev()
+    {
+        $this->model->prev();
+    }
+
+    public function next()
+    {
+        $this->model->next();
     }
 }

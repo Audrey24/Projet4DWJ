@@ -6,24 +6,24 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <ul class="list-inline text-center">
-            <li class="list-inline-item">
+            <li class="list-inline-item"><a href="https://twitter.com/jesusofficiel?lang=fr">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                 </span>
-            </li>
-            <li class="list-inline-item">
+            </a></li>
+            <li class="list-inline-item"><a href="https://www.facebook.com/tourisme.quebec/">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                 </span>
-            </li>
-            <li class="list-inline-item">
+            </a></li>
+            <li class="list-inline-item"><a href="https://www.youtube.com/watch?v=6M6samPEMpM">
                 <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
                 </span>
-            </li>
+            </a></li>
           </ul>
           <p class="copyright">Copyright &copy; Your Website 2018</p>
           <div class="copyright">

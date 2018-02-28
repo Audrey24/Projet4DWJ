@@ -33,8 +33,7 @@
 
 
     <div id="Send_msg"></div></br>
-    <input id="submitbtn_autor" type="submit" class=" btn btn-success col-lg-4 col-md-4 col-sm-4 offset-lg-1" />
-    <input class="btn btn-info col-lg-4 col-md-4 col-sm-4 offset-lg-2 offset-sm-3" value="Corbeille"/>
+    <input id="submitbtn_autor" type="submit" class=" btn btn-success col-lg-12 col-md-12 col-sm-12" />
   </form>
 
   <script src="lib/tinymce/js/tinymce/tinymce.min.js"></script>

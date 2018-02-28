@@ -325,10 +325,15 @@ form .form-group:first-child .floating-label-form-group {
   border-top: 1px solid #dee2e6;
 }
 
-.list-inline-item {
+.list-inline-item a {
   margin: 0;
   padding: 0;
   color: gray !important;
+}
+.list-inline-item a:hover {
+  margin: 0;
+  padding: 0;
+  color: #17a2b8 !important;
 }
 
 .copyright {

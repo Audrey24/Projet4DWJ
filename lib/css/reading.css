@@ -62,3 +62,25 @@
 .btnDislike :hover {
   color: orange;
 }
+
+#chapter_error {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+#prevLink {
+  color: white;
+}
+
+#nextLink {
+  color: white;
+}
+
+#prevLink:hover {
+  font-size : 0.8em;
+}
+
+#nextLink:hover {
+  font-size : 0.8em;;
+}
