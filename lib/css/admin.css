@@ -161,22 +161,3 @@ table {
 .deleteDislike:hover {
   color: red;
 }
-
-
-@media only screen and (min-width: 768px) {
-
-  .brand {
-    font-size: 25px !important;
-  }
-
-
-	.menu-list .menu-content {
-		font-size: 1.5em !important;
-	}
-
-	#colonne2 {
-		font-size: 1.2em !important;
-	}
-
-
-}

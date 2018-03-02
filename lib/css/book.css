@@ -93,3 +93,8 @@
   text-align: center;
   margin-top : 300px;
 }
+
+#comEnd {
+  text-align: center;
+	font-style: italic;
+}

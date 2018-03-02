@@ -1,20 +1,4 @@
 <?php Session::init(); ?>
-<?php
-  if (!empty(Session::get('pseudo'))) {
-      ?>
-<script>
-  var id ="<?php echo $_SESSION['id']; ?>"
-  var pseudo ="<?php echo $_SESSION['pseudo']; ?>"
-  var role ="<?php echo $_SESSION['role']; ?>"
-</script>
- <?php
-  } else {
-      ?>
-  <script>
-    var role ="Inconnu";
-  </script>
-<?php
-  } ?>
 
 <!DOCTYPE html>
 <html>
@@ -118,3 +102,20 @@
     <?php include('login/connexionform.php');?>
 
     <div id="content"> </div>
+
+    <?php
+      if (!empty(Session::get('pseudo'))) {
+          ?>
+    <script>
+      var id ="<?php echo $_SESSION['id']; ?>"
+      var pseudo ="<?php echo $_SESSION['pseudo']; ?>"
+      var role ="<?php echo $_SESSION['role']; ?>"
+    </script>
+     <?php
+      } else {
+          ?>
+      <script>
+        var role ="Inconnu";
+      </script>
+    <?php
+      } ?>

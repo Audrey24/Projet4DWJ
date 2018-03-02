@@ -62,18 +62,18 @@ td a:hover {
 	font-weight: bold;
 }
 
+@media all and (max-device-width: 480px)
+{
+    #presentation {
+			font-size: 1.5em;
+		}
 
-@media only screen and (min-width: 768px) {
+		#contain_news {
+			font-size: 1.5em;
+			margin-top: 30px;
+		}
 
-	body {
-		font-size: 1.3em !important;
-	}
-
-	#contain_news {
-		font-size: 1.3em !important
-	}
-
-	#articles {
-		margin-top: 50px;	
-	}
+		#articles {
+			margin-top: 30px;
+		}
 }
