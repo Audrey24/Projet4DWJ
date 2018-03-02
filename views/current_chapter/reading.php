@@ -31,8 +31,8 @@ for ($i=0; $i<$result; $i++) {
 </div></br>
 
 <div id="controls">
-    <button type="button" class="btn btn-info col-lg-2 offset-lg-3" id="prev"><a id="prevLink">Chapitre précédent</a></button>
-    <button type="button" class="btn btn-info col-lg-2 offset-lg-2" id="next"><a id="nextLink">Chapitre suivant</a></button>
+    <button type="button" class="btn btn-info col-lg-2 col-md-3 col-sm-3 col-xs-3 offset-lg-3 offset-md-2 offset-sm-2 offset-xs-2" id="prev"><a id="prevLink">Chapitre précédent</a></button>
+    <button type="button" class="btn btn-info col-lg-2 col-md-3 col-sm-3 col-xs-3 offset-lg-2 offset-md-2 offset-sm-2 offset-xs-2" id="next"><a id="nextLink">Chapitre suivant</a></button>
 </div>
 
 

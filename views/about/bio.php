@@ -11,9 +11,9 @@
               <p>Mêlant intensité, suspense et amour, ses romans ont fait de lui un des auteurs français favoris du grand public, traduit dans le monde entier, et adapté au cinéma.<p>
             </div>
           <h3 class="bio_title">Bibliographie</h3></br>
-            <div><img src="lib/images/Et_après.jpg" alt="Couverture du livre 'Et après'" class="col-lg-3">
-                 <img src="lib/images/Je_reviens_te_chercher.jpg" alt="Couverture du livre 'Je reviens te chercher'" class="col-lg-3">
-                 <img src="lib/images/Parceque_je_taime.jpg" alt="Couverture du livre 'Parce que je taime.jpg'" class="col-lg-3">
+            <div><img src="lib/images/Et_après.jpg" alt="Couverture du livre 'Et après'" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                 <img src="lib/images/Je_reviens_te_chercher.jpg" alt="Couverture du livre 'Je reviens te chercher'" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                 <img src="lib/images/Parceque_je_taime.jpg" alt="Couverture du livre 'Parce que je taime.jpg'" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
             </div>
 
     </div>

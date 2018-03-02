@@ -61,3 +61,19 @@ td a:hover {
 .pseudo_chap {
 	font-weight: bold;
 }
+
+
+@media only screen and (min-width: 768px) {
+
+	body {
+		font-size: 1.3em !important;
+	}
+
+	#contain_news {
+		font-size: 1.3em !important
+	}
+
+	#articles {
+		margin-top: 50px;	
+	}
+}

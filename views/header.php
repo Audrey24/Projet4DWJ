@@ -76,14 +76,14 @@
               <a class="nav-link" href="<?php echo  URL; ?>Contact" >Contact</a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo  URL; ?>Last_chapters">Derniers chapitres</a>
-            </li>
-
 
             <?php
             if (!empty(Session::get('pseudo'))) {
                 ?>
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo  URL; ?>Last_chapters">Derniers chapitres</a>
+          </li>
 
             <li class="nav-item">
               <a class="nav-link" href="<?php echo  URL; ?>Current_chapter">Lecture en cours</a>

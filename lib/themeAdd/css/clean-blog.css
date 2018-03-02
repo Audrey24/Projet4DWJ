@@ -161,6 +161,18 @@ img::-moz-selection {
   }
 }
 
+@media only screen and (min-width: 768px) {
+
+  #mainNav .navbar-toggler {
+    font-size: 20px;
+    padding: 25px;
+  }
+
+  #mainNav .navbar-nav > li.nav-item > a {
+    font-size: 20px;
+}
+}
+
 header.masthead {
   margin-bottom: 50px;
   background: no-repeat center center;
