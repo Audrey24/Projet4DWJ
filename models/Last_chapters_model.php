@@ -10,7 +10,7 @@ class Last_chapters_model extends Model
     //Obtenir les chapitres.
     public function getChapters()
     {
-        $req = $this->db->prepare('SELECT id, title, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date FROM chapters ORDER BY publication_date  ASC');
+        $req = $this->db->prepare('SELECT id, title, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date FROM chapters ORDER BY id DESC');
         $req->execute();
 
         $res = $req->fetchAll();

@@ -34,7 +34,6 @@ class Current_chapter_model extends Model
     public function next()
     {
         $id= $_POST['id'];
-
         //On récupère tous les chap dont l'id est supérieur au chap actuel.
         //(plus efficace que de faire +1 - évite les pb quand les chap sont supprimés et que le id ne suivent donc pas )
         $req = $this->db->prepare('SELECT id FROM chapters WHERE id > :id ORDER BY id ASC LIMIT 1');
