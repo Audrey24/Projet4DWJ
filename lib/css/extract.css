@@ -1,0 +1,27 @@
+.page {
+  background-color : #f2f2f2 !important;
+  padding: 20px;
+}
+
+#extract_title {
+  text-align: center;
+  margin-top : 300px;
+}
+
+.cover {
+  background-image: url(../images/couverture.jpg);
+  text-align: center;
+  padding: 20px;
+}
+
+.Extract_end {
+  text-align: center;
+  padding: 20px;
+}
+
+
+#suite_extract {
+  text-align: center;
+  margin-top : 300px;
+  font-style: italic;
+}

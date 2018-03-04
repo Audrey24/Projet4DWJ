@@ -79,6 +79,11 @@
              <?php
             } else {
                 ?>
+
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo  URL; ?>Teaser" >Extrait</a>
+            </li>
+
             <li class="nav-item">
               <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal" id="connexion">Connexion</a>
             </li>
