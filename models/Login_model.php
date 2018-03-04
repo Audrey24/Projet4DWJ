@@ -18,7 +18,7 @@ class Login_model extends Model
         $pass = $_POST['password1'];
 
         //Comparaison des données saisies avec celles de la Bdd.
-        $req = $this->db->prepare('SELECT id, pass, role FROM users WHERE pseudo = :pseudo');
+        $req = $this->db->prepare('SELECT id, pass, role, read_chapter, read_page FROM users WHERE pseudo = :pseudo');
         $req->execute(array(
         'pseudo' => $pseudo));
 
@@ -40,7 +40,7 @@ class Login_model extends Model
         } elseif (password_verify($pass, $resultat['pass'])) {
             $msgs["message12"] =" Bienvenue " . $pseudo . ", bonne visite !";
             Session::init(); //sans ceci cela ne marche pas
-            Session::authenticate($resultat['role'], $pseudo, $resultat['id']);
+            Session::authenticate($resultat['role'], $pseudo, $resultat['id'], $resultat['read_chapter'], $resultat['read_page']);
         } else {
             $msgs["message11"] =" Erreur, mauvais mot de passe !  Il vous reste " .  $val . " essais " ;
             $error = 1;

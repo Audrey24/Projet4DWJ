@@ -98,3 +98,13 @@
   text-align: center;
 	font-style: italic;
 }
+
+#mark {
+	display: flex;
+	margin: 20px;
+	font-style: italic;
+}
+
+#saveChapter {
+	margin-right: 20px;
+}

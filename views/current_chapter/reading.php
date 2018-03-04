@@ -1,10 +1,13 @@
-<?php
-  Session::init();
-  Session::set('current', $this->data['id']);
- ?>
+<?php Session::get('read_chapter')?>
 <link href="<?php echo  URL; ?>lib/css/book.css" rel="stylesheet" type='text/css'></link>
 
-<div id="flipbook" class="col-lg-12" data-id="<?php echo $this->data['id']; ?>">
+<div id="mark">
+  <button class="btn btn-info" id="saveChapter"><i class="fa fa-bookmark fa-lg"></i></button>
+  <p>Cliquez pour sauvegarder votre lecture</p>
+</div>
+<div id="markChapter"></div>
+
+<div id="flipbook" class="col-lg-12" data-id="<?php echo $this->data['id']; ?>" data-pagecurrent="<?php echo Session::get('read_page') ?>">
 <div class="cover"><h1 id="ChapTitle"><?php echo $this->data["title"]; ?></h1></div>
 <?php $data = $this->data['content'];
 //echo $data;
@@ -15,8 +18,6 @@ $parts = explode("</p>", $data);
 $result = count($parts);
 $page = "";
 $count = 1;
-
-
 
 for ($i=0; $i<$result; $i++) {
     $page .= $parts[$i];
@@ -66,6 +67,8 @@ for ($i=0; $i<$result; $i++) {
 </div>
 
 <?php include("modalCommentChapter.php");?>
+
+<script>var chapter = "<?php echo $_SESSION['read_chapter']; ?>"</script>
 
 <script type="text/javascript" src="../../lib/js/comments_chapter.js" defer></script>
 <!--<script type="text/javascript" src="../../lib/themeAdd/turn.min.js" defer></script>-->

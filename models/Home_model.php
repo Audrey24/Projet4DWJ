@@ -32,11 +32,23 @@ class Home_model extends Model
     //Afficher les 20 derniers commentaires.
     public function getComments()
     {
+        Session::init();
         $id_text = $_POST['id_text'];
         //On sélectionne les 20 commentaires les plus récents.
-        $req = $this->db->prepare('SELECT comments.id, comments.content, DATE_FORMAT( published_date, "%d/%m/%Y") AS published_date, users.pseudo FROM comments INNER JOIN users ON comments.id_user = users.id WHERE id_text = :id_text ORDER BY published_date  DESC LIMIT 20');
+        $req = $this->db->prepare('SELECT comments.id, comments.content,
+                                          DATE_FORMAT(comments.published_date, "%d/%m/%Y") AS published_date,
+                                          users.pseudo, report_news.id_user
+                                   FROM comments
+                                   INNER JOIN users ON comments.id_user = users.id
+                                   LEFT JOIN report_news ON report_news.id_user = :session
+                                   AND report_news.id_comment = comments.id
+                                   WHERE comments.id_text = :id_text
+                                   ORDER BY comments.published_date
+                                   DESC LIMIT 20');
         $req->execute(array(
-            'id_text' => $id_text));
+            'id_text' => $id_text,
+             'session' => Session::get('id')
+           ));
 
         $res = $req->fetchAll();
         echo json_encode($res);

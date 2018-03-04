@@ -62,4 +62,9 @@ class Current_chapter extends Controller
     {
         $this->model->next();
     }
+
+    public function updateCurrent_chapter()
+    {
+        $this->model->updateCurrent_chapter();
+    }
 }

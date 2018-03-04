@@ -74,11 +74,23 @@ class Current_chapter_model extends Model
     //Afficher les 20 derniers commentaires.
     public function getCommentsChapter()
     {
+        Session::init();
         $id_chapter = $_POST['id_chapter'];
         //On sélectionne les 20 commentaires les plus récents.
-        $req = $this->db->prepare('SELECT commentschapter.id, commentschapter.content, DATE_FORMAT( published_date, "%d/%m/%Y") AS published_date, users.pseudo FROM commentschapter INNER JOIN users ON commentschapter.id_user = users.id WHERE id_chapter = :id_chapter ORDER BY published_date  DESC LIMIT 20');
+        $req = $this->db->prepare('SELECT commentschapter.id, commentschapter.content,
+                                          DATE_FORMAT( commentschapter.published_date, "%d/%m/%Y") AS published_date,
+                                          users.pseudo, report_chapters.id_user
+                                   FROM commentschapter
+                                   INNER JOIN users ON commentschapter.id_user = users.id
+                                   LEFT JOIN report_chapters ON report_chapters.id_user = :session
+                                   AND report_chapters.id_comment = commentschapter.id
+                                   WHERE id_chapter = :id_chapter
+                                   ORDER BY commentschapter.published_date
+                                   DESC LIMIT 20');
         $req->execute(array(
-            'id_chapter' => $id_chapter));
+            'id_chapter' => $id_chapter,
+            'session' => Session::get('id')
+          ));
 
         $res = $req->fetchAll();
         echo json_encode($res);
@@ -106,5 +118,22 @@ class Current_chapter_model extends Model
         $req->execute(array(
         'id_user' => $id_user,
         'id_comment' => $id_comment));
+    }
+
+    public function updateCurrent_chapter()
+    {
+        Session::init();
+        $id = Session::get('id');
+        $read_chapter = $_POST['id'];
+        $read_page = $_POST['read_page'];
+        Session::set('read_chapter', $read_chapter);
+        Session::set('read_page', $read_page);
+
+        $req = $this->db->prepare('UPDATE users SET read_chapter = :read_chapter, read_page = :read_page WHERE id= :id');
+        $req->execute(array(
+        'id' => $id,
+        'read_chapter' => $read_chapter,
+        'read_page' => $read_page
+        ));
     }
 }
