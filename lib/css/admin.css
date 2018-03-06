@@ -161,3 +161,15 @@ table {
 .deleteDislike:hover {
   color: red;
 }
+
+.pseudoComments {
+  font-weight: bold;
+}
+
+.dateComments {
+  font-style: italic;
+}
+
+.delete:hover {
+  color: red;
+}

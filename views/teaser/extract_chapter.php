@@ -7,7 +7,7 @@ echo '<div class="page">'. $data . '</div>' ?>
 
 
 <div class="Extract_end">
-  <p id="suite_extract">Si ce chapitre vous a plu, connectez-vous pour lire la suite !  </p>
+  <p id="suite_extract" data-toggle="modal" data-target="#myModal">Si ce chapitre vous a plu, cliquez pour vous connecter et lire la suite !</p>
 </div>
 </div>
 

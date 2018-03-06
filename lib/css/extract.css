@@ -25,3 +25,7 @@
   margin-top : 300px;
   font-style: italic;
 }
+
+#suite_extract:hover {
+  color : #17a2b8;
+}

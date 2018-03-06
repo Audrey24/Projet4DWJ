@@ -20,14 +20,21 @@
                           <li class='updateCol2' data-file="edit" data-type="Brouillon">Brouillons</li>
                         </ul>
 
-                <li data-toggle="collapse" data-target="#comment" class="collapsed active">
-                  <i class="fa fa-comments fa-lg"></i> Commentaires signalés</li>
-                    <ul class="sub-menu collapse" id="comment">
-                      <li class='updateCol2' data-file="dislikeComments" data-type="Article">Articles</li>
-                      <li class='updateCol2' data-file="dislikeComments" data-type="Chapitre">Chapitres</li>
-                    </ul>
-            </ul>
-        </div>
+                  <li data-toggle="collapse" data-target="#comment" class="collapsed active">
+                      <i class="fa fa-comment fa-lg"></i> Commentaires récents</li>
+                        <ul class="sub-menu collapse" id="comment">
+                          <li class='updateCol2' data-file="lastComments" data-type="Article">Articles</li>
+                          <li class='updateCol2' data-file="lastComments" data-type="Chapitre">Chapitres</li>
+                        </ul>
+
+                  <li data-toggle="collapse" data-target="#dislike_comment" class="collapsed active">
+                      <i class="fa fa-comments fa-lg"></i> Commentaires signalés</li>
+                        <ul class="sub-menu collapse" id="dislike_comment">
+                          <li class='updateCol2' data-file="dislikeComments" data-type="Article">Articles</li>
+                          <li class='updateCol2' data-file="dislikeComments" data-type="Chapitre">Chapitres</li>
+                        </ul>
+              </ul>
+          </div>
       </div>
 
       <div id="colonne2" class="col-lg-9"></div>

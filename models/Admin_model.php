@@ -257,7 +257,7 @@ class Admin_model extends Model
                                       ON users.id = comments.id_user ) AS T
                                     ON comments.id_user = T.id
                                     GROUP BY id_comment
-                                    HAVING COUNT(*) >2');
+                                    HAVING COUNT(*) = 1');
         $req->execute();
         $res = $req->fetchAll();
         echo json_encode($res);
@@ -273,11 +273,47 @@ class Admin_model extends Model
                                         ON users.id = commentschapter.id_user ) AS K
                                       ON commentschapter.id_user = K.id
                                       GROUP BY id_comment
-                                      HAVING COUNT(*) >2');
+                                      HAVING COUNT(*) = 1');
 
           $req->execute();
           $res = $req->fetchAll();
           echo json_encode($res);
+          break;
+        }
+    }
+
+    public function getComments($type)
+    {
+        switch ($type) {
+        case 'Article':
+          $req = $this->db->prepare('SELECT comments.id, comments.content,
+                                      DATE_FORMAT(comments.published_date, "%d/%m/%Y") AS published_date,
+                                      users.pseudo
+                                    FROM comments
+                                    INNER JOIN users ON comments.id_user = users.id
+                                    ORDER BY comments.published_date
+                                    DESC LIMIT 20');
+
+          $req->execute();
+          $res = $req->fetchAll();
+          echo json_encode($res);
+        break;
+
+        case 'Chapitre':
+          $req = $this->db->prepare('SELECT commentschapter.id, commentschapter.content,
+                                      DATE_FORMAT( commentschapter.published_date, "%d/%m/%Y") AS published_date,
+                                      users.pseudo
+                                     FROM commentschapter
+                                     INNER JOIN users ON commentschapter.id_user = users.id
+                                     ORDER BY commentschapter.published_date
+                                     DESC LIMIT 20');
+          $req->execute();
+          $res = $req->fetchAll();
+          echo json_encode($res);
+        break;
+
+        default:
+          echo "Erreur, pas de textes";
           break;
         }
     }
