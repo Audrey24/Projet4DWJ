@@ -163,11 +163,8 @@ class Login_model extends Model
             $param = session_get_cookie_params();
             setcookie(session_name(), '', time()-42000, $param['path'], $param['domain'], $param['secure']);
         }
-
         //Suppression et redirection.
         session_destroy();
-
-
         header('Location: ../home');
     }
 }

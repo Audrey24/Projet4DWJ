@@ -32,6 +32,7 @@
           <div id="success1"></div>
           <input type="submit" class="btn btn-success col-lg-3 col-md-3 col-sm-3" id="btn_submit" value="Valider"/>
           <button type="button" class=" btn btn-info col-lg-6 col-md-6 col-sm-6 offset-lg-2 offset-md-2 offset-sm-2" id="sign_in">Créer votre compte</button>
+          <div class="copyright" id="forgetLogin">Mot de passe oublié ?</div>
         </form>
 
 
@@ -65,9 +66,25 @@
 
           <div id="success"></div>
           <input type="submit" class="btn btn-success col-lg-12 col-md-12 col-sm-12 g-recaptcha" id="sign_up" value="Créer"/>
-
         </form>
+
+        <!--Récupération mot de passe-->
+        <form name="getLogin" id="getLogin" method="post" action="" novalidate>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <p>Veuillez entrer votre adresse mail afin de récupérer votre mot de passe</p>
+              <label>Adresse mail</label>
+              <input type="email" class="form-control" placeholder="Adresse Mail" name="mailGetLogin" id="mailGetLogin" required data-validation-required-message="Entrer votre adresse mail..">
+              <p class="help-block text-danger"></p>
+            </div>
+            <div id="sendMail"></div>
+            <input type="submit" class="btn btn-success col-lg-12 col-md-12 col-sm-12 g-recaptcha" id="btnGetLogin" value="Valider"/>
+          </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<link href="<?php echo  URL; ?>lib/css/login.css" rel="stylesheet">

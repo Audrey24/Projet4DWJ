@@ -18,11 +18,13 @@ class Home extends Controller
     // Ajout des données recupéréres par getOneNews (un article) dans la page.
     public function news($id)
     {
-        //$news= $this->model->getOneNews($id);
-        //$comment=
-
-        $this->view->addData($this->model->getOneNews($id));
-        $this->view->render('home/news', 'lib/images/news.jpg');
+        $news = $this->model->getOneNews($id);
+        if (!empty($news)) {
+            $this->view->addData($news);
+            $this->view->render('home/news', 'lib/images/news.jpg');
+        } else {
+            $this->view->render('errorme/errorpage', 'lib/images/erreur.jpg');
+        }
     }
 
     //Fonction pour commenter
