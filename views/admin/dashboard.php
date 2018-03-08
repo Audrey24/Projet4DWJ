@@ -26,7 +26,7 @@
                         </ul>
                         <?php
               } ?>
-                        
+
 
                   <li data-toggle="collapse" data-target="#comment" class="collapsed active">
                       <i class="fa fa-comment fa-lg"></i> Commentaires récents</li>
