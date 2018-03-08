@@ -8,7 +8,7 @@ class Admin extends Controller
         parent::__construct();
         //Si un visiteur essaye d'accéder à admin, on le redirige vers l'accueil.
         Session::init();
-        if (Session::get('role') != 'admin') {
+        if (Session::get('role') != 'admin' || Session::get('role') != "moderateur") {
             header('location: home');
         }
     }

@@ -5,3 +5,11 @@
 #forgetLogin:hover {
   font-weight: bold;
 }
+
+.msgForgetLogin {
+  text-align: center;
+}
+
+#resetSuccess {
+  margin-top:20px;
+}

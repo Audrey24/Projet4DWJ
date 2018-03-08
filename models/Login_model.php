@@ -167,4 +167,52 @@ class Login_model extends Model
         session_destroy();
         header('Location: ../home');
     }
+
+    public function generateLog()
+    {
+        $mail = $_POST['mail'];
+
+        $req = $this->db->prepare('SELECT id FROM users WHERE mail = :mail');
+        $req->execute(array(
+        "mail" => $mail));
+        $res = $req->fetch();
+
+        $hash = md5(random_bytes(16));
+
+        $req = $this->db->prepare('INSERT INTO  recovery_login (id_user, hash) VALUES(:id_user, :hash)');
+        $req->execute(array(
+              'id_user' => $res['id'],
+              'hash' => $hash ));
+
+        $body = "Vous avez demandé une réinitialisation de votre mot de passe.\n\n"."Veuillez suivre ce lien pour choisir votre nouveau mot de passe:\n\n". "http://projet3.projetsdwjguilloux.ovh/projet_4/Login/recovery/" . $hash ."";
+        $headers = "From: noreply@yprojetsdwjguilloux.ovh\n";
+        $headers .= "Reply-To: noreply@yprojetsdwjguilloux.ovh\n" ;
+
+        mail($mail, "Demande de récupération de mot de passe", $body, $headers);
+    }
+
+    public function recovery($hash)
+    {
+        $req = $this->db->prepare('SELECT id_user FROM recovery_login WHERE hash = :hash');
+        $req->execute(array(
+              'hash' => $hash));
+        $res = $req->fetch();
+        return $res;
+    }
+
+    public function updateLog()
+    {
+        $id = $_POST['id'];
+        $pass = $_POST['pass'];
+        $pass = password_hash($pass, PASSWORD_DEFAULT);
+
+        $req = $this->db->prepare('UPDATE users SET  pass = :pass WHERE id = :id');
+        $req->execute(array(
+        'id' => $id,
+        'pass' => $pass));
+
+        $req = $this->db->prepare('DELETE FROM recovery_login WHERE id_user = :id_user');
+        $req->execute(array(
+        'id_user' => $id));
+    }
 }

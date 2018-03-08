@@ -90,7 +90,7 @@
             } ?>
 
             <?php
-            if (!empty(Session::get('pseudo')) && (Session::get('role')) == 'admin') {
+            if (!empty(Session::get('pseudo')) && (Session::get('role') == 'admin' || Session::get('role') == 'moderateur')) {
                 ?>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo  URL; ?>Admin">Admin</a>

@@ -41,6 +41,7 @@
     <script src="<?php echo  URL; ?>lib/js/form.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
     <script type="text/javascript">
     if(document.location.hostname == 'localhost') {
       var url = 'http://localhost/projet_4/';

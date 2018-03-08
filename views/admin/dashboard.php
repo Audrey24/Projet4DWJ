@@ -6,6 +6,11 @@
 
         <div class="menu-list">
             <ul id="menu-content" class="menu-content collapse out">
+
+              <?php
+              if (!empty(Session::get('pseudo')) && (Session::get('role')) == 'admin') {
+                  ?>
+
                 <li data-toggle="collapse" data-target="#news" class="collapsed active">
                   <i class="fa fa-pencil fa-lg"></i> Editeur de texte</li>
                     <ul class="sub-menu collapse" id="news">
@@ -19,6 +24,9 @@
                           <li class='updateCol2' data-file="edit" data-type="Chapitre">Chapitres</li>
                           <li class='updateCol2' data-file="edit" data-type="Brouillon">Brouillons</li>
                         </ul>
+                        <?php
+              } ?>
+                        
 
                   <li data-toggle="collapse" data-target="#comment" class="collapsed active">
                       <i class="fa fa-comment fa-lg"></i> Commentaires récents</li>

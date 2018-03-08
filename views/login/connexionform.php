@@ -69,7 +69,7 @@
         </form>
 
         <!--Récupération mot de passe-->
-        <form name="getLogin" id="getLogin" method="post" action="" novalidate>
+        <form name="getLogin" id="getLogin" method="post" novalidate>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <p>Veuillez entrer votre adresse mail afin de récupérer votre mot de passe</p>
