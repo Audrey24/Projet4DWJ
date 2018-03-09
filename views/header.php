@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" lang="fr">
-    <title>Jean Rochefort, blog d'éciture</title>
+    <title>Jean Forteroche, blog d'écriture</title>
     <link href="<?php echo  URL; ?>lib/themeAdd/css/clean-blog.min.css" rel="stylesheet">
     <link href="<?php echo  URL; ?>lib/themeAdd/css/clean-blog.css" rel="stylesheet">
     <link href="<?php echo  URL; ?>lib/css/admin.css" rel="stylesheet">

@@ -62,10 +62,10 @@
             </div>
           </div>
 
-          <!--<div class="g-recaptcha" data-sitekey="6LdjZkMUAAAAAMKX1N30r9ALt2tk1o4H7ztK8x98" data-size="invisible" data-badge="inline"> </div>-->
-
           <div id="success"></div>
-          <input type="submit" class="btn btn-success col-lg-12 col-md-12 col-sm-12 g-recaptcha" id="sign_up" value="Créer"/>
+
+          <input type="submit" class="btn btn-success col-lg-12 col-md-12 col-sm-12" id="sign_up" value="Créer"/>
+          <div class="g-recaptcha" data-sitekey="6LdjZkMUAAAAAMKX1N30r9ALt2tk1o4H7ztK8x98" data-size="invisible" data-badge="inline"></div>
         </form>
 
         <!--Récupération mot de passe-->
@@ -79,12 +79,11 @@
             </div>
             <div id="sendMail"></div>
             <input type="submit" class="btn btn-success col-lg-12 col-md-12 col-sm-12 g-recaptcha" id="btnGetLogin" value="Valider"/>
-          </form>
           </div>
+         </form>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 <link href="<?php echo  URL; ?>lib/css/login.css" rel="stylesheet">

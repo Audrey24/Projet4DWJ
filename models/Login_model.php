@@ -55,14 +55,14 @@ class Login_model extends Model
     {
         $error = 0;
         $msgs[] = array();
-        /*$secret = '6LdjZkMUAAAAAGEU0LnnUXfuOCx-XrylQGKARHXs';
+        $secret = '6LdjZkMUAAAAAGEU0LnnUXfuOCx-XrylQGKARHXs';
         $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['recaptcha']);
         $responseData = json_decode($verifyResponse);
 
         if ($responseData->success != 1) {
             $msgs["message8"] = "Bonjour M. le robot (les robots ne s'intéressent pas trop à mes livres !)";
             $error = 1;
-        }*/
+        }
 
         //On vérifie si le champs est rempli et la validité du pseudo. Si pb, on retourne un msg d'erreur.
         $pseudo = $_POST['pseudo'];
@@ -137,15 +137,22 @@ class Login_model extends Model
 
         //Si les données sont disponibles, on les insère dans la bdd et on début une session.
         if ($error == 0) {
-            $req = $this->db->prepare('INSERT INTO users (pseudo, mail, pass, role) VALUES(:pseudo, :mail, :pass, :role)');
-            $req->execute(array(
+            try {
+                $this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $req = $this->db->prepare('INSERT INTO users (pseudo, mail, pass, role) VALUES(:pseudo, :mail, :pass, :role)');
+                $req->execute(array(
                   'pseudo' => $pseudo,
                   'mail' => $email,
                   'pass' => $passbrut,
                   'role' => "visiteur"));
-            $msgs["message9"] = "L'inscription est validée, bienvenue sur notre site " . $pseudo;
-            Session::init();
-            Session::authenticate('visiteur', $pseudo, $this->db->lastInsertId());
+                $msgs["message9"] = "L'inscription est validée, bienvenue sur notre site " . $pseudo;
+                Session::init();
+                Session::authenticate('visiteur', $pseudo, $this->db->lastInsertId());
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
 
         echo json_encode($msgs);

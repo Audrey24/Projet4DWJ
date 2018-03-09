@@ -21,7 +21,7 @@ $count = 1;
 
 for ($i=0; $i<$result; $i++) {
     $page .= $parts[$i];
-    if (strlen($page) >2000 || $i==$result) {
+    if (strlen($page) >1500 || $i==$result) {
         echo '<div><div class="page">'. $page . '</div><div class="pagination">' . $count .'</div></div>';
         $page = "";
         $count++;
@@ -61,9 +61,9 @@ for ($i=0; $i<$result; $i++) {
     </div>
 </div></br>
 
-<div id="controls">
-    <button type="button" class="btn btn-info col-lg-2 col-md-3 col-sm-3 col-xs-3 offset-lg-3 offset-md-2 offset-sm-2 offset-xs-2" id="prev"><a id="prevLink">Chapitre précédent</a></button>
-    <button type="button" class="btn btn-info col-lg-2 col-md-3 col-sm-3 col-xs-3 offset-lg-2 offset-md-2 offset-sm-2 offset-xs-2" id="next"><a id="nextLink">Chapitre suivant</a></button>
+<div id="controls" class="col-lg-12 col-md-12">
+    <a id="prevLink">CHAPITRE PRECEDENT</a>
+    <a id="nextLink">CHAPITRE SUIVANT</a>
 </div>
 
 <?php include("modalCommentChapter.php");?>

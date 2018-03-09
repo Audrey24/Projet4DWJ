@@ -71,16 +71,30 @@
 
 #prevLink {
   color: white;
+  background-color: #17a2b8;
+  border: solid #138496;
+  padding: 10px;
+  border-radius: 10px;
+  font-size : 1em;
+  margin-left : 30%;
+  margin-top: 20px;
 }
 
 #nextLink {
   color: white;
+  background-color: #17a2b8;
+  border: solid #138496;
+  padding: 10px;
+  border-radius: 10px;
+  font-size : 1em;
+  margin-left : 10%;
+  margin-top: 20px;
 }
 
 #prevLink:hover {
-  font-size : 0.8em;
+  font-size : 1.1em;
 }
 
 #nextLink:hover {
-  font-size : 0.8em;;
+  font-size : 1.1em;;
 }

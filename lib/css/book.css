@@ -57,8 +57,7 @@
 }
 
 .flipbook-viewport .double{
-	width:800px;
-	height:100px !important;
+	width:100%;
 	background-size:100% 100%;
 }
 
@@ -69,8 +68,8 @@
 
 .pagination {
   position: absolute;
-  bottom:10;
-  right:20;
+  bottom:0;
+  right:1;
 }
 
 #ChapTitle {

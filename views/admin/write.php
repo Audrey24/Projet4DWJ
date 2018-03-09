@@ -33,7 +33,7 @@
 
 
     <div id="Send_msg"></div></br>
-    <input id="submitbtn_autor" type="submit" class=" btn btn-success col-lg-12 col-md-12 col-sm-12" />
+    <input id="submitbtn_autor" type="submit" class=" btn btn-success col-lg-12 col-md-12 col-sm-12" value="Valider"/>
   </form>
 
   <script src="lib/tinymce/js/tinymce/tinymce.min.js"></script>

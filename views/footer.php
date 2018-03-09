@@ -52,12 +52,8 @@
     <!-- Custom scripts for this template -->
     <script src="<?php echo  URL; ?>lib/themeAdd/js/clean-blog.min.js"></script>
 
-
-
-
-
     <!-- Captcha google-->
-    <!--<script src='https://www.google.com/recaptcha/api.js?callback=recaptchaOnload'></script>-->
+    <script src='https://www.google.com/recaptcha/api.js' defer async></script>
 
 </body>
 </html>
