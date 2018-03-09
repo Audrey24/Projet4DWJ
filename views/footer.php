@@ -35,7 +35,7 @@
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="<?php echo  URL; ?>lib/themeAdd/dep/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo  URL; ?>lib/themeAdd/js/jqBootstrapValidation.js"></script>
     <script src="<?php echo  URL; ?>lib/js/form.js"></script>
@@ -46,14 +46,14 @@
     if(document.location.hostname == 'localhost') {
       var url = 'http://localhost/projet_4/';
     } else {
-      var url = 'http://projet3.projetsdwjguilloux.ovh/projet_4/';
+      var url = 'https://projet3.projetsdwjguilloux.ovh/projet_4/';
     }</script>
 
     <!-- Custom scripts for this template -->
     <script src="<?php echo  URL; ?>lib/themeAdd/js/clean-blog.min.js"></script>
 
-    <!-- Captcha google-->
-    <script src='https://www.google.com/recaptcha/api.js' defer async></script>
+    <!-- Captcha google
+    <script src='https://www.google.com/recaptcha/api.js' defer async></script>-->
 
 </body>
 </html>
