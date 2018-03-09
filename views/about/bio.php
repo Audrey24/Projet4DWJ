@@ -16,6 +16,7 @@
                  <img src="lib/images/Parceque_je_taime.jpg" alt="Couverture du livre 'Parce que je taime.jpg'" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
             </div>
 
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>

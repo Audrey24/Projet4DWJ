@@ -3,6 +3,12 @@
   padding: 20px;
 }
 
+.pagination {
+  position: absolute;
+  bottom:0;
+  right:1;
+}
+
 #extract_title {
   text-align: center;
   margin-top : 300px;

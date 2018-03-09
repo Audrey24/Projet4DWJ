@@ -3,8 +3,21 @@
 <div id="extract_book" class="col-lg-12" data-id = "<?php echo $this->data["id"]; ?>">
 <div class="cover"><h1 id="extract_title"><?php echo $this->data["title"]; ?></h1></div>
 <?php $data = $this->data['content'];
-echo '<div class="page">'. $data . '</div>' ?>
 
+$parts = explode("</p>", $data);
+$result = count($parts);
+$page = "";
+$count = 1;
+
+for ($i=0; $i<$result; $i++) {
+    $page .= $parts[$i];
+    if (strlen($page) >1800 || $i==$result) {
+        echo '<div><div class="page">'. $page . '</div><div class="pagination">' . $count .'</div></div>';
+        $page = "";
+        $count++;
+    }
+};
+?>
 
 <div class="Extract_end">
   <p id="suite_extract" data-toggle="modal" data-target="#myModal">Si ce chapitre vous a plu, cliquez pour vous connecter et lire la suite !</p>
