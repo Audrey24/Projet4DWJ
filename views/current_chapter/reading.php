@@ -29,9 +29,19 @@ for ($i=0; $i<$result; $i++) {
   <p id="suite">A suivre ...</p>
   <p id="comEnd">Si ce chapitre vous a plu, n'hésitez pas à laisser un commentaire sur la page suivante ! </p>
 </div>
+</div></br>
+
+<div id="controls" class="col-lg-12 col-md-12">
+    <a id="prevLink">CHAPITRE PRECEDENT</a>
+    <a id="nextLink">CHAPITRE SUIVANT</a>
+</div></br>
+
+<hr>
+
 
 <div class="container">
-      <div class=" control-group">
+  <div class="row">
+      <div class=" col-lg-4 col-sm-12   control-group">
         <?php if (!empty(Session::get('pseudo'))) {
     ?>
         <div class="form-group floating-label-form-group controls">
@@ -45,9 +55,9 @@ for ($i=0; $i<$result; $i++) {
         ?> <div class="connexionMsg">Vous devez être connecté pour pouvoir laisser un commentaire !</div></br>
         <button class="btn btn-info col-lg-12 col-md-12" data-toggle="modal" data-target="#myModal">Connexion</button><?php
     } ?>
-      </div></br>
+      </div>
 
-      <div class="control-group">
+      <div class=" col-lg-7 col-sm-12 offset-lg-1 control-group">
         <p id='lastComments'>Derniers commentaires</p>
         <table class="table table-sm">
           <tbody id="contain_commentsChap">
@@ -56,12 +66,7 @@ for ($i=0; $i<$result; $i++) {
         <div id="commentchap"></div>
       </div>
     </div>
-</div></br>
-
-<div id="controls" class="col-lg-12 col-md-12">
-    <a id="prevLink">CHAPITRE PRECEDENT</a>
-    <a id="nextLink">CHAPITRE SUIVANT</a>
-</div>
+  </div>
 
 <?php include("modalCommentChapter.php");?>
 

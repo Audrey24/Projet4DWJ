@@ -72,8 +72,6 @@ class Current_chapter_model extends Model
             'content' => $content,
             'id_user' => $id,
             'id_chapter' => $id_chapter));
-
-        echo("fonciton php");
     }
 
     //Afficher les 20 derniers commentaires.
@@ -83,7 +81,7 @@ class Current_chapter_model extends Model
         $id_chapter = $_POST['id_chapter'];
         //On sélectionne les 20 commentaires les plus récents.
         $req = $this->db->prepare('SELECT commentschapter.id, commentschapter.content,
-                                          DATE_FORMAT( commentschapter.published_date, "%d/%m/%Y") AS published_date,
+                                          DATE_FORMAT(commentschapter.published_date, "%d/%m/%Y") AS published_date,
                                           users.pseudo, report_chapters.id_user
                                    FROM commentschapter
                                    INNER JOIN users ON commentschapter.id_user = users.id
