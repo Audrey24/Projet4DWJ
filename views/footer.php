@@ -25,7 +25,7 @@
           </ul>
           <p class="copyright">Copyright &copy; Your Website 2018</p>
           <div class="copyright">
-            <p>Ce site est un projet lié à ma formation de DWJ avec Openclassrooms. Je me suis inspiré de l'écrivain Guillaume Musso et ai utilisé des éléments trouvés sur son  site.</p>
+            <p>Ce site est un projet lié à ma formation de DWJ avec Openclassrooms. Je me suis inspirée de l'écrivain Guillaume Musso et ai utilisé des éléments trouvés sur son  site.</p>
             <a href ="http://www.guillaumemusso.com/" id="lienMusso">Voir le site de Guillaume Musso.</a>
           </div>
         </div>

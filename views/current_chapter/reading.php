@@ -1,11 +1,20 @@
 <?php Session::get('read_chapter')?>
 <link href="<?php echo  URL; ?>lib/css/book.css" rel="stylesheet" type='text/css'></link>
 
-<div id="mark">
-  <button class="btn btn-info" id="saveChapter"><i class="fa fa-bookmark fa-lg"></i></button>
-  <p>Cliquez pour sauvegarder votre lecture</p>
+<div class="container">
+  <div class="row">
+    <div id="mark" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+      <button class="btn btn-info" id="saveChapter"><i class="fa fa-bookmark fa-lg"></i></button>
+      <p>Cliquez pour sauvegarder votre lecture</p>
+    </div>
+    <div id="markChapter"></div>
+
+    <div id="msgarrow" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 offset-lg-1 offset-ms-1 offset-sm-1 offset-xs-1">
+      <i class="fa fa-info-circle" id="info"></i>
+      <p>Utiliser les flèches du clavier pour tourner les pages ou cliquer sur le coin droit de la page du livre</p>
+    </div>
+  </div>
 </div>
-<div id="markChapter"></div>
 
 <div id="flipbook" class="col-lg-12" data-id="<?php echo $this->data['id']; ?>" data-pagecurrent="<?php echo Session::get('read_page') ?>">
 <div class="cover"><h1 id="ChapTitle"><?php echo $this->data["title"]; ?></h1></div>

@@ -29,7 +29,7 @@
           </div>
         </div>
         <br>
-        <div id="success"></div>
+        <div id="successSendMsg"></div>
         <div class="form-group">
           <button type="submit" class="btn btn-success col-lg-2 col-md-4 offset-lg-5 offset-md-4" id="sendMessageButton">Envoyer</button>
         </div>

@@ -102,8 +102,23 @@
 	display: flex;
 	margin: 20px;
 	font-style: italic;
+	height: 40px;
+}
+
+#msgarrow {
+	display: flex;
+	margin: 20px;
+	font-style: italic;
 }
 
 #saveChapter {
 	margin-right: 20px;
+	padding-right: 12px;
+	border-radius: 22px;
+}
+
+#info {
+	margin-right: 20px;
+	color: #17a2b8;
+	font-size: 2.5em;
 }
