@@ -11,7 +11,7 @@ class Home_model extends Model
     public function getNews()
     {
         //On sélectionne les 5 articles les plus récents.
-        $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date  FROM news  ORDER BY publication_date  DESC LIMIT 5');
+        $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date  FROM news  WHERE  deferred_date < NOW() ORDER BY deferred_date  DESC LIMIT 5');
         $req->execute();
 
         $res = $req->fetchAll();

@@ -78,7 +78,7 @@
               <p class="help-block text-danger"></p>
             </div>
             <div id="sendMail"></div>
-            <input type="submit" class="btn btn-success col-lg-12 col-md-12 col-sm-12 g-recaptcha" id="btnGetLogin" value="Valider"/>
+            <input type="submit" class="btn btn-success col-lg-12 col-md-12 col-sm-12" id="btnGetLogin" value="Valider"/>
           </div>
          </form>
         </div>

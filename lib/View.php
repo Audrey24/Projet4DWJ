@@ -5,7 +5,7 @@ class View
     {
     }
 
-    //Fonction pour l'affichage des ves qui rend une vue, une image, le header et le footer.
+    //Fonction pour l'affichage des vues qui rend une vue, une image, le header et le footer.
     public function render($name, $img = null, $noInclude = false)
     {
         //Si le paramètre img est définit, on l'insère dans la var qui se trouve dans le header.
