@@ -10,6 +10,7 @@
       <label for="brouillon">Brouillon</label></br>
 
       <input type="text" name="id" id="id" class="col-lg-1 offset-lg-11"/>
+      <input type="text" name="type" id="type" class="col-lg-1 offset-lg-11"/>
     </div><br />
 
 

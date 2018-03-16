@@ -20,7 +20,7 @@ for ($i=0; $i<$result; $i++) {
 ?>
 
 <div class="Extract_end">
-  <p id="suite_extract" data-toggle="modal" data-target="#myModal">Si ce chapitre vous a plu, cliquez pour vous connecter et lire la suite !</p>
+  <p id="suite_extract" class="Btnconnexion" data-toggle="modal" data-target="#myModal">Si ce chapitre vous a plu, cliquez pour vous connecter et lire la suite !</p>
 </div>
 </div>
 

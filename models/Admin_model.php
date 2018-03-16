@@ -13,6 +13,7 @@ class Admin_model extends Model
         //Déclaration des var
         $content = $_POST['editor'];
         $type = $_POST['typeTexte'];
+        $oldtype = $_POST['type'];
         $title = $_POST['title'];
         //Si la publication différée est vide, on lui assigne la date actuelle.
         if (!isset($_POST['deferred_date']) || (empty($_POST['deferred_date']))) {
@@ -25,19 +26,37 @@ class Admin_model extends Model
         //Si l'id est déjà saisi, on le récupère dans une var (le texte est donc déjà existant)
         if (!empty($_POST['id'])) {
             $id = $_POST['id'];
-            //Et on effectue une mise à jour du texte.
+            //Et on vérifie les changements.
             switch ($type) {
               case 'Article':
-                $this->updateNews($id, $title, $content, $deferred_date);
-                break;
+              //Si pas de changement de type de texte, on fait une MAJ.
+                if ($type == $oldtype) {
+                    $this->updateNews($id, $title, $content, $deferred_date);
+                } else {
+                    //Si changement, on supprime l'ancien texte de sa table de bdd.
+                    $this->delete($id, $oldtype);
+                    //Et on l'innsère dans le table du nouveau type.
+                    $this->insert($type, $title, $content, $deferred_date);
+                }
+              break;
 
               case 'Chapitre':
-                $this->updateChapters($id, $title, $content, $deferred_date);
-                break;
+              if ($type == $oldtype) {
+                  $this->updateChapters($id, $title, $content, $deferred_date);
+              } else {
+                  $this->delete($id, $oldtype);
+                  $this->insert($type, $title, $content, $deferred_date);
+              }
+             break;
 
               case 'Brouillon':
-                $this->updateDrafts($id, $title, $content, $deferred_date);
-                break;
+              if ($type == $oldtype) {
+                  $this->updateDrafts($id, $title, $content, $deferred_date);
+              } else {
+                  $this->delete($id, $oldtype);
+                  $this->insert($type, $title, $content, $deferred_date);
+              }
+            break;
 
               default:
                 echo "Erreur";
@@ -105,14 +124,10 @@ class Admin_model extends Model
     //Fonction pour suppression les entrées de la Bdd par rapport à l'id sélectionné.
     //Obligé de faire deux requêtes plutôt qu'une jointure car impossible avec la jointure de supprimer
     //un chapitre sans commentaire. Il fallait absolument qu'il est lien entre les 2 tables.
-    public function delete()
+    public function delete($id, $type)
     {
-        $id = $_POST['id'];
-        $type = $_POST['type'];
-
         switch ($type) {
-          case 'Article':
-
+        case 'Article':
           $req = $this->db->prepare('DELETE FROM news WHERE id = :id');
           $req->execute(array(
             'id' => $id));
@@ -124,34 +139,40 @@ class Admin_model extends Model
           $req = $this->db->prepare(' DELETE FROM report_news WHERE id_text = :id');
           $req->execute(array(
             'id' => $id));
-          break;
+        break;
 
-          case 'Chapitre':
-
+        case 'Chapitre':
           $req = $this->db->prepare('DELETE  FROM chapters WHERE id = :id');
           $req->execute(array(
            'id' => $id));
 
-           $req = $this->db->prepare(' DELETE FROM commentschapter WHERE id_chapter = :id');
-           $req->execute(array(
-             'id' => $id));
+          $req = $this->db->prepare(' DELETE FROM commentschapter WHERE id_chapter = :id');
+          $req->execute(array(
+            'id' => $id));
 
           $req = $this->db->prepare(' DELETE FROM report_chapters WHERE id_text = :id');
           $req->execute(array(
             'id' => $id));
-          break;
+        break;
 
-          case 'Brouillon':
+        case 'Brouillon':
 
           $req = $this->db->prepare('DELETE FROM drafts WHERE id = :id');
           $req->execute(array(
           'id' => $id));
-          break;
+        break;
 
-          default:
+        default:
           echo "Erreur, pas de textes";
-          break;
+        break;
         }
+    }
+
+    public function deleteAJAX()
+    {
+        $id = $_POST['id'];
+        $type = $_POST['type'];
+        $this->delete($id, $type);
     }
 
     //Fonction pour récupèrer un texte en fonction de l'id sélectionné.
@@ -251,6 +272,27 @@ class Admin_model extends Model
           'title' => $title,
           'content' => $content,
           'deferred_date' =>$deferred_date));
+    }
+
+    public function insert($type, $title, $content, $deferred_date)
+    {
+        switch ($type) {
+        case 'Article':
+          $this->insertNews($title, $content, $deferred_date);
+        break;
+
+        case 'Chapitre':
+          $this->insertChapters($title, $content, $deferred_date);
+        break;
+
+        case 'Brouillon':
+          $this->insertDrafts($title, $content, $deferred_date);
+        break;
+
+        default:
+            echo "Erreur, pas de textes";
+        break;
+      }
     }
 
     public function getDislike($type)
@@ -375,5 +417,30 @@ class Admin_model extends Model
             'id_comment' => $id));
           break;
         }
+    }
+
+    public function editType()
+    {
+        switch ($type) {
+      case 'Article':
+        $req = $this->db->prepare('DELETE FROM nWHERE comments.id = :id');
+        $req->execute(array(
+          'id' => $id));
+
+    $req = $this->db->prepare('DELETE  FROM report_news WHERE report_news.id_comment = :id');
+    $req->execute(array(
+      'id' => $id));
+  break;
+
+  case 'Chapitre':
+    $req = $this->db->prepare('DELETE FROM commentschapter WHERE commentschapter.id = :id');
+    $req->execute(array(
+      'id' => $id));
+
+      $req = $this->db->prepare('DELETE  FROM report_chapters WHERE report_chapters.id_comment = :id');
+      $req->execute(array(
+       'id' => $id));
+  break;
+  }
     }
 }

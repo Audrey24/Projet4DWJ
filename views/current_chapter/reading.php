@@ -62,7 +62,7 @@ for ($i=0; $i<$result; $i++) {
         <?php
 } else {
         ?> <div class="connexionMsg">Vous devez être connecté pour pouvoir laisser un commentaire !</div></br>
-        <button class="btn btn-info col-lg-12 col-md-12" data-toggle="modal" data-target="#myModal">Connexion</button><?php
+        <button class="btn btn-info col-lg-12 col-md-12 Btnconnexion" data-toggle="modal" data-target="#myModal">Connexion</button><?php
     } ?>
       </div>
 

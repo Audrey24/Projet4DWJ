@@ -143,6 +143,10 @@ table {
   display: none;
 }
 
+#type {
+  display: none;
+}
+
 .search {
   border : solid #17A2B8;
   border-radius: 10px;

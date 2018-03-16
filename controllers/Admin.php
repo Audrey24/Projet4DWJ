@@ -36,6 +36,11 @@ class Admin extends Controller
         $this->model->delete();
     }
 
+    public function deleteAJAX()
+    {
+        $this->model->deleteAJAX();
+    }
+
     public function getOne()
     {
         $this->model->getOne();
