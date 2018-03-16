@@ -60,18 +60,18 @@ class Current_chapter_model extends Model
         //On récupère l'id du texte que l'on commente et les données du commentaire.
         $id_chapter = $_POST['id_chapter'];
         $content = $_POST['content'];
+        $content = htmlspecialchars($content);
         Session::init();
         $id = Session::get('id');
-        echo $id;
-        echo $id_chapter;
-        echo $content;
 
-        //On insère dans le Bdd et on ajoute l'id de l'user pour pouvoir ajouter le pseudo sur la vue.
-        $req = $this->db->prepare('INSERT INTO commentschapter (content, id_user, id_chapter) VALUES(:content, :id_user, :id_chapter)');
-        $req->execute(array(
+        if (!empty($content)) {
+            //On insère dans le Bdd et on ajoute l'id de l'user pour pouvoir ajouter le pseudo sur la vue.
+            $req = $this->db->prepare('INSERT INTO commentschapter (content, id_user, id_chapter) VALUES(:content, :id_user, :id_chapter)');
+            $req->execute(array(
             'content' => $content,
             'id_user' => $id,
             'id_chapter' => $id_chapter));
+        }
     }
 
     //Afficher les 20 derniers commentaires.

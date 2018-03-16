@@ -14,6 +14,7 @@
                                           ?>
 
       <div class="form-group floating-label-form-group controls">
+        <form>
         <label>Commenter</label>
         <textarea placeholder="Votre commentaire" id="comment" name ="comment" required data-validation-required-message="Veuillez écrire un commentaire."></textarea>
       </div>
@@ -24,7 +25,7 @@
                                           ?> <div class="connexionMsg">Vous devez être connecté pour pouvoir laisser un commentaire !</div></br>
            <button class="btn btn-info col-lg-12 col-md-12 Btnconnexion" data-toggle="modal" data-target="#myModal">Connexion</button><?php
                                       } ?>
-
+    </form>                                  
     </div></br>
 
   <div class="col-lg-7 col-sm-12 offset-lg-1 control-group">

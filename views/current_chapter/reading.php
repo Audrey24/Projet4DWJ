@@ -54,6 +54,7 @@ for ($i=0; $i<$result; $i++) {
         <?php if (!empty(Session::get('pseudo'))) {
     ?>
         <div class="form-group floating-label-form-group controls">
+          <form>
           <label>Commenter</label>
           <textarea placeholder="Votre commentaire" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="commentChapter" name ="commentChapter" required data-validation-required-message="Veuillez écrire un commentaire."></textarea>
         </div>
@@ -64,6 +65,7 @@ for ($i=0; $i<$result; $i++) {
         ?> <div class="connexionMsg">Vous devez être connecté pour pouvoir laisser un commentaire !</div></br>
         <button class="btn btn-info col-lg-12 col-md-12 Btnconnexion" data-toggle="modal" data-target="#myModal">Connexion</button><?php
     } ?>
+  </form>
       </div>
 
       <div class=" col-lg-7 col-sm-12 offset-lg-1 control-group">

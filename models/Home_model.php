@@ -60,15 +60,18 @@ class Home_model extends Model
         //On récupère l'id du texte que l'on commente et les données du commentaire.
         $id_text = $_POST['id_text'];
         $content = $_POST['content'];
+        $content = htmlspecialchars($content);
         Session::init();
         $id = Session::get('id');
 
-        //On insère dans le Bdd et on ajoute l'id de l'user pour pouvoir ajouter le pseudo sur la vue.
-        $req = $this->db->prepare('INSERT INTO comments (content, id_user, id_text) VALUES(:content, :id_user, :id_text)');
-        $req->execute(array(
+        if (!empty($content)) {
+            //On insère dans le Bdd et on ajoute l'id de l'user pour pouvoir ajouter le pseudo sur la vue.
+            $req = $this->db->prepare('INSERT INTO comments (content, id_user, id_text) VALUES(:content, :id_user, :id_text)');
+            $req->execute(array(
             'content' => $content,
             'id_user' => $id,
             'id_text' => $id_text));
+        };
     }
 
     //Fonction pour suppression les entrées de la Bdd par rapport à l'id sélectionné.

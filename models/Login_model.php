@@ -60,7 +60,7 @@ class Login_model extends Model
         $responseData = json_decode($verifyResponse);
 
         if ($responseData->success != 1) {
-            $msgs["message8"] = "Bonjour M. le robot (les robots ne s'intéressent pas trop à mes livres !)";
+            $msgs["message8"] = "Vous avez tenté de créer trop de comptes en peu de temps ! Veuillez recommencer plus tard ! ";
             $error = 1;
         }
 
