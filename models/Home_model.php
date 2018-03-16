@@ -11,7 +11,7 @@ class Home_model extends Model
     public function getNews()
     {
         //On sélectionne les 5 articles les plus récents.
-        $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date  FROM news  WHERE  deferred_date < NOW() ORDER BY deferred_date  DESC LIMIT 5');
+        $req = $this->db->prepare('SELECT id, title, content, deferred_date  FROM news  WHERE  deferred_date < NOW() ORDER BY deferred_date  DESC LIMIT 5');
         $req->execute();
 
         $res = $req->fetchAll();
@@ -21,7 +21,7 @@ class Home_model extends Model
     //Fonction pour récupèrer une news en fonction de l'id sélectionné.
     public function getOneNews($id)
     {
-        $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date FROM news WHERE id = :id ');
+        $req = $this->db->prepare('SELECT id, title, content, deferred_date FROM news WHERE id = :id ');
         $req->execute(array(
         'id' => $id));
 
@@ -86,13 +86,16 @@ class Home_model extends Model
     public function dislikeComments()
     {
         $id_comment = $_POST['id_comment'];
+        $id_text = $_POST['id_text'];
         Session::init();
         $id_user = Session::get('id');
-        echo $id;
+        echo $id_text;
 
-        $req = $this->db->prepare('INSERT INTO report_news (id_user, id_comment) VALUES(:id_user, :id_comment)');
+
+        $req = $this->db->prepare('INSERT INTO report_news (id_user, id_comment, id_text) VALUES(:id_user, :id_comment, :id_text)');
         $req->execute(array(
         'id_user' => $id_user,
-        'id_comment' => $id_comment));
+        'id_comment' => $id_comment,
+        'id_text' => $id_text));
     }
 }

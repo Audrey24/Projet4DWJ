@@ -113,14 +113,16 @@ class Current_chapter_model extends Model
     public function dislikeComment()
     {
         $id_comment = $_POST['id_comment'];
+        $id_text = $_POST['id_text'];
         Session::init();
         $id_user = Session::get('id');
         echo $id;
 
-        $req = $this->db->prepare('INSERT INTO report_chapters (id_user, id_comment) VALUES(:id_user, :id_comment)');
+        $req = $this->db->prepare('INSERT INTO report_chapters (id_user, id_comment, id_text) VALUES(:id_user, :id_comment, :id_text)');
         $req->execute(array(
         'id_user' => $id_user,
-        'id_comment' => $id_comment));
+        'id_comment' => $id_comment,
+        'id_text' => $id_text));
     }
 
     public function updateCurrent_chapter()

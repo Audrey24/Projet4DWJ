@@ -1,7 +1,8 @@
 <div id="newspage" data-id="<?php echo($this->data['id']); ?>" class="col-lg-6 offset-lg-3">
   <h3><?php echo($this->data['title']); ?></h3></br>
   <div><?php echo($this->data['content']); ?></div></br>
-  <p id="published">Publié le : <?php echo($this->data['publication_date']); ?></p>
+  <p id="published">Publié le : <?php $date = new DateTime($this->data['deferred_date']);
+                                      echo $date->format('d/m/Y');?></p>
 </div></br>
 
 <hr>
@@ -10,7 +11,7 @@
   <div class="row">
       <div class="col-lg-3 col-sm-12 offset-lg-1 control-group">
     <?php if (!empty(Session::get('pseudo'))) {
-    ?>
+                                          ?>
 
       <div class="form-group floating-label-form-group controls">
         <label>Commenter</label>
@@ -19,10 +20,10 @@
       <div id="commentMsg"></div></br>
       <button type="submit" class="btn btn-success col-lg-12 col-md-12" id="commenter">Commenter</button>
       <?php
-} else {
-        ?> <div class="connexionMsg">Vous devez être connecté pour pouvoir laisser un commentaire !</div></br>
+                                      } else {
+                                          ?> <div class="connexionMsg">Vous devez être connecté pour pouvoir laisser un commentaire !</div></br>
            <button class="btn btn-info col-lg-12 col-md-12" data-toggle="modal" data-target="#myModal">Connexion</button><?php
-    } ?>
+                                      } ?>
 
     </div></br>
 

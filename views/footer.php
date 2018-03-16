@@ -43,11 +43,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 
     <script type="text/javascript">
-    if(document.location.hostname == 'localhost') {
-      var url = 'http://localhost/projet_4/';
-    } else {
       var url = 'https://projet3.projetsdwjguilloux.ovh/projet_4/';
-    }</script>
+    </script>
 
     <!-- Custom scripts for this template -->
     <script src="<?php echo  URL; ?>lib/themeAdd/js/clean-blog.min.js"></script>

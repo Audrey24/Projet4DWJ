@@ -1,0 +1,15 @@
+
+define('DB_TYPE', 'mysql');
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'blog');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+
+define('URL', 'http://localhost/projet_4/');
+
+<script type="text/javascript">
+if(document.location.hostname == 'localhost') {
+  var url = 'http://localhost/projet_4/';
+} else {
+  var url = 'https://projet3.projetsdwjguilloux.ovh/projet_4/';
+}</script>

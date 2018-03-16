@@ -70,7 +70,7 @@ class Admin_model extends Model
     {
         switch ($type) {
         case 'Article':
-          $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date, DATE_FORMAT( deferred_date, "%d/%m/%Y") AS deferred_date FROM news ORDER BY publication_date  DESC ');
+          $req = $this->db->prepare('SELECT id, title, content, publication_date, deferred_date FROM news ORDER BY deferred_date  DESC ');
           $req->execute(array(
             "type" => $type));
 
@@ -79,7 +79,7 @@ class Admin_model extends Model
         break;
 
         case 'Chapitre':
-          $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date, DATE_FORMAT( deferred_date, "%d/%m/%Y") AS deferred_date FROM chapters ORDER BY publication_date  DESC ');
+          $req = $this->db->prepare('SELECT id, title, content, publication_date, deferred_date FROM chapters ORDER BY deferred_date  DESC ');
           $req->execute(array(
             "type" => $type));
 
@@ -88,7 +88,7 @@ class Admin_model extends Model
         break;
 
         case 'Brouillon':
-          $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT( publication_date, "%d/%m/%Y") AS publication_date, DATE_FORMAT( deferred_date, "%d/%m/%Y") AS deferred_date FROM drafts ORDER BY publication_date  DESC ');
+          $req = $this->db->prepare('SELECT id, title, content,  publication_date,  deferred_date FROM drafts ORDER BY deferred_date  DESC ');
           $req->execute(array(
             "type" => $type));
 
@@ -113,24 +113,32 @@ class Admin_model extends Model
         switch ($type) {
           case 'Article':
 
-          $req = $this->db->prepare('DELETE FROM news WHERE news.id = :id');
+          $req = $this->db->prepare('DELETE FROM news WHERE id = :id');
           $req->execute(array(
             'id' => $id));
 
-          $req = $this->db->prepare(' DELETE FROM comments WHERE comments.id_text = :id');
+          $req = $this->db->prepare(' DELETE FROM comments WHERE id_text = :id');
+          $req->execute(array(
+            'id' => $id));
+
+          $req = $this->db->prepare(' DELETE FROM report_news WHERE id_text = :id');
           $req->execute(array(
             'id' => $id));
           break;
 
           case 'Chapitre':
 
-          $req = $this->db->prepare('DELETE  FROM chapters WHERE chapters.id = :id');
+          $req = $this->db->prepare('DELETE  FROM chapters WHERE id = :id');
           $req->execute(array(
            'id' => $id));
 
-           $req = $this->db->prepare(' DELETE FROM commentschapter WHERE commentschapter.id_chapter = :id');
+           $req = $this->db->prepare(' DELETE FROM commentschapter WHERE id_chapter = :id');
            $req->execute(array(
              'id' => $id));
+
+          $req = $this->db->prepare(' DELETE FROM report_chapters WHERE id_text = :id');
+          $req->execute(array(
+            'id' => $id));
           break;
 
           case 'Brouillon':
