@@ -25,7 +25,7 @@ $result = count($parts);
 $page = "";
 $count = 1;
 
-for ($i=0; $i<$result; $i++) {
+for ($i=0; $i<=$result; $i++) {
     $page .= $parts[$i];
     if (strlen($page) >1800 || $i==$result) {
         echo '<div><div class="page">'. $page . '</div><div class="pagination">' . $count .'</div></div>';

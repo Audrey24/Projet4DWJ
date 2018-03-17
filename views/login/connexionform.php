@@ -64,8 +64,9 @@
 
           <div id="success"></div>
 
+          <div class="g-recaptcha" data-sitekey="6Lc0LU0UAAAAAOW7crKFnGiOnZAyYWa9-bJzDK2l"></div>
           <input type="submit" class="btn btn-success col-lg-12 col-md-12 col-sm-12" id="sign_up" value="Créer"/>
-          <div class="g-recaptcha" data-sitekey="6LdjZkMUAAAAAMKX1N30r9ALt2tk1o4H7ztK8x98" data-size="invisible" data-badge="inline"></div>
+
         </form>
 
         <!--Récupération mot de passe-->

@@ -55,12 +55,20 @@ class Login_model extends Model
     {
         $error = 0;
         $msgs[] = array();
-        $secret = '6LdjZkMUAAAAAGEU0LnnUXfuOCx-XrylQGKARHXs';
-        $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['recaptcha']);
-        $responseData = json_decode($verifyResponse);
 
-        if ($responseData->success != 1) {
-            $msgs["message8"] = "Vous avez tenté de créer trop de comptes en peu de temps ! Veuillez recommencer plus tard ! ";
+        $secret = '6Lc0LU0UAAAAAJUMPZb2bOwSonrx52xRz6Bn5sDc';
+        $sitekey = '6Lc0LU0UAAAAAOW7crKFnGiOnZAyYWa9-bJzDK2l';
+        $remoteip = $_SERVER['REMOTE_ADDR'];
+        $response = $_POST['recaptcha'];
+
+        $api_url = "https://www.google.com/recaptcha/api/siteverify?secret="
+        . $secret
+        . "&response=" . $response
+        . "&remoteip=" . $remoteip;
+        $decode = json_decode(file_get_contents($api_url), true);
+
+        if ($decode['success'] == false) {
+            $msgs["message8"] = "Vous n'avez pas réussi l'épreuve Recaptcha, prenez votre flambeau et rejoignez moi !";
             $error = 1;
         }
 

@@ -50,3 +50,4 @@
   </div>
 
   <script src="<?php echo  URL; ?>lib/js/admin_dashboard.js" defer></script>
+  <script src="<?php echo  URL; ?>lib/js/delegatedEvents.js" defer></script>
