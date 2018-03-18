@@ -307,7 +307,7 @@ class Admin_model extends Model
                                       ON users.id = comments.id_user ) AS T
                                     ON comments.id_user = T.id
                                     GROUP BY id_comment
-                                    HAVING COUNT(*) = 1');
+                                    HAVING COUNT(*) >= 1');
         $req->execute();
         $res = $req->fetchAll();
         echo json_encode($res);
@@ -323,7 +323,7 @@ class Admin_model extends Model
                                         ON users.id = commentschapter.id_user ) AS K
                                       ON commentschapter.id_user = K.id
                                       GROUP BY id_comment
-                                      HAVING COUNT(*) = 1');
+                                      HAVING COUNT(*) >= 1');
 
           $req->execute();
           $res = $req->fetchAll();
